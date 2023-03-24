@@ -1,0 +1,14 @@
+@media screen and (max-width:767px) {
+    .profile__image {
+        margin: 0;
+        padding: 0;
+        margin-bottom: 2px;
+    }
+}
+
+@media screen and (min-width:768px) {
+    .profile__image {
+        width: 10px;
+        height: 10px;
+    }
+}

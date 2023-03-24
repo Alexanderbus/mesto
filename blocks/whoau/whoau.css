@@ -1,0 +1,33 @@
+.whoau {
+    font-family: Inter;
+    font-weight: 400;
+    color: #fff;
+    margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+    .whoau {
+        font-size: 4.5vw;
+        text-align: center;
+        margin-top: 22.25px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width:1279px) {
+    .whoau {
+        font-size: 1.40625vw;
+        line-height: 1.71875vw;
+        letter-spacing: 0em;
+        text-align: left;
+        margin-top: 16px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .whoau {
+        font-size: 18px;
+        line-height: 22px;
+        text-align: left;
+        margin-top: 16px;
+    }
+}

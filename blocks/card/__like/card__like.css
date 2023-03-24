@@ -1,0 +1,30 @@
+@media screen and (max-width:767px) {
+    .card__like {
+        margin: 0;
+        padding: 0;
+        width: 6.875vw;
+        height: 6.875vw;
+        border: 0;
+        background-color: rgba(28,28,28,0);
+        background-image: url('../../../images/like.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-top: 1.5625vw;
+    }    
+}
+
+@media screen and (min-width:768px) {
+    .card__like {
+        margin: 0;
+        padding: 0;
+        margin-left: 70px;
+        width: 22px;
+        height: 19px;
+        border: 0;
+        background-color: rgba(28,28,28,0);
+        background-image: url('../../../images/like.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-top: 7px;
+    }
+}

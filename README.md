@@ -15,3 +15,5 @@
 Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
 
 Удачи!
+
+@media screen and (min-width: 768px) and (max-width:1279px) {

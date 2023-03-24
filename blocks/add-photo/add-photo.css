@@ -1,0 +1,35 @@
+@media screen and (max-width:767px) {
+    .add-photo {
+        background-color: rgba(28,28,28,0);
+        border: 2px solid #fff;
+        height: 15.625vw;
+        width: 86vw;
+        margin-left: 7vw;
+        margin-top: 36px;
+        margin-bottom: 36px;
+        padding: 0;
+        display: inline-block;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width:1279px) {
+    .add-photo {
+        border: 2px solid #fff;
+        background-color: rgba(28,28,28,0);
+        height: 3.90625vw;
+        width: 11.71875vw;
+        margin-top: 75px;
+        margin-left: 102px;
+    }
+}
+
+@media screen and (min-width:1280px) {
+    .add-photo {
+        background-color: rgba(28,28,28,0);
+        border: 2px solid #fff;
+        height: 50px;
+        width: 150px;
+        margin-top: 75px;
+        margin-left: 244px;
+    }
+}

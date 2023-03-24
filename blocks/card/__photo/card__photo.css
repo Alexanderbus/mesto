@@ -1,0 +1,18 @@
+@media screen and (max-width: 767px) {
+    .card__photo {
+        width: 88.125vw;
+        height: 88.125vw;
+        margin-left: 5.9375vw;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+    }
+}
+
+@media screen and (min-width:768px) {
+    .card__photo {
+        width: 282px;
+        height: 282px;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+    }
+}

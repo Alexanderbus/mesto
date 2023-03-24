@@ -1,0 +1,31 @@
+@media screen and (max-width:767px) {
+    .copyright {
+        font-family: Inter;
+        font-size: 4.375vw;
+        font-weight: 400;
+        line-height: 5.3125vw;
+        text-align: left;
+        display: inline-block;
+        color: #545454;
+        margin-left: 5.9375vw;
+    }
+}
+
+@media screen and (min-width:768px) {
+    .copyright {
+        font-family: Inter;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 22px;
+        letter-spacing: 0em;
+        text-align: left;
+        display: inline-block;
+        color: #545454;
+    }
+}
+
+@media screen and (min-width:1280px) {
+    .copyright {
+        margin-left: calc((100vw - 880px) / 2);
+    }
+}
