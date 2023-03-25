@@ -13,10 +13,12 @@
 @media screen and (max-width: 767px) {
     .name {
         margin: 0;
+        margin-left: 20.31vw;
+        margin-right: 3.125vw;
         line-height: 10.3125vw;
-        margin-right: 3.1vw;
         font-size: 8.6vw;
-        margin-left: 20vw;
+        text-align: center;
+        width: 59.0625vw;
     }
 }
 

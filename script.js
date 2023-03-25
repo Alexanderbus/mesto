@@ -27,6 +27,7 @@ closebutton.addEventListener('click', (e) => {
 })
 
 
+
 changhename.addEventListener('click', (e) => {
     if (popname.value.length > 0 && popwhoau.value.length > 0) {
     nickname.textContent = popname.value 
@@ -35,7 +36,8 @@ changhename.addEventListener('click', (e) => {
     popname.value = '';
     openpop.classList.remove('pop-up_opened');
     } else {
-        openpop.classList.remove('pop-up_opened');
+        popname.setAttribute("placeholder", 'Введите имя!');
+        popwhoau.setAttribute("placeholder", 'Введите кто вы!')
     }
 })
 

@@ -2,7 +2,7 @@
     opacity: .5;
 }
 
-@media  screen and (max-width:767px){
+@media  screen and (max-width:767px) {
 .profile__button {
     margin: 0;
     padding: 0;
@@ -10,8 +10,7 @@
     background-color: rgba(28,28,28,0);
     height: 5.625vw;
     width: 5.625vw;
-    position: absolute;
-    top: 12.8125vw;
+    margin-left: auto;
     background-image: url('../../../images/pencil.png');
     background-repeat: no-repeat;
     background-size: 42%;
