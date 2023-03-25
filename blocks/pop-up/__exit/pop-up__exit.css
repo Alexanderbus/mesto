@@ -1,0 +1,48 @@
+.pop-up__exit:hover {
+    opacity: .5;
+}
+
+@media screen and (max-width:767px){
+    .pop-up__exit {
+        background-color: rgba(28,28,28,0);
+        background-image: url(../../../images/exit.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 6.25vw;
+        height: 6.25vw;
+        position: absolute;
+        margin-top: -11.25vw;
+        margin-left: 81.875vw;
+        border: 0;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:1279px){
+    .pop-up__exit {
+        background-color: rgba(28,28,28,0);
+        background-image: url(../../../images/exit.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 4.16vw;
+        height: 4.16vw;
+        position: absolute;
+        margin-top: -5.2vw;
+        margin-left: 57.03vw;
+        border: 0;
+    }
+}
+
+@media screen and (min-width:1280px) {
+    .pop-up__exit {
+        background-color: rgba(28,28,28,0);
+        background-image: url(../../../images/exit.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        margin-top: -40px;
+        margin-left: 438px;
+        border: 0;
+    }
+}

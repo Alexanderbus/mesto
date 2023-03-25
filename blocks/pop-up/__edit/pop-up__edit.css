@@ -1,0 +1,41 @@
+.pop-up__edit {
+    background-color: rgba(0, 0, 0);
+}
+
+.pop-up__edit:hover {
+    background-color: rgba(0, 0, 0, .5); 
+}
+
+@media screen and (max-width:767px){
+    .pop-up__edit  {
+        width: 74.375vw;
+        height: 14.375vw;
+        margin-top: 14.0624vw;
+        margin-left: 6.875vw;
+        padding: 0;
+        border: none;
+        padding: 0;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width:1279px) {
+    .pop-up__edit {
+        border: none;
+        width: 46.614vw;
+        height: 6.51vw;
+        margin-left: 4.6875vw;
+        margin-top: 6.25vw;
+        padding: 0;
+    }
+}
+
+@media screen and (min-width:1280px) {
+    .pop-up__edit {
+        border: none;
+        width: 358px;
+        height: 50px;
+        margin-left: 36px;
+        margin-top: 48px;
+        padding: 0;
+    }
+}

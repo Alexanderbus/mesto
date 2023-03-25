@@ -1,12 +1,21 @@
+.profile__button:hover {
+    opacity: .5;
+}
+
 @media  screen and (max-width:767px){
 .profile__button {
     margin: 0;
     padding: 0;
     border: solid 1px #fff;
     background-color: rgba(28,28,28,0);
-    height: 18px;
-    width: 18px;
-    margin-top: calc(8.6vw + 22.25px);
+    height: 5.625vw;
+    width: 5.625vw;
+    position: absolute;
+    top: 12.8125vw;
+    background-image: url('../../../images/pencil.png');
+    background-repeat: no-repeat;
+    background-size: 42%;
+    background-position: center;
 }
 }
 
@@ -16,9 +25,13 @@
         padding: 0;
         border: solid 1px #fff;
         background-color: rgba(28,28,28,0);
-        height: 24px;
-        width: 24px;
+        height: 1.875vw;
+        width: 1.875vw;
         margin-left: 10px;
+        background-image: url('../../../images/pencil.png');
+        background-repeat: no-repeat;
+        background-size: 42%;
+        background-position: center;
     }
     }
 
@@ -32,5 +45,9 @@
         height: 24px;
         width: 24px;
         margin-left: 18px;
+        background-image: url('../../../images/pencil.png');
+        background-repeat: no-repeat;
+        background-size: 42%;
+        background-position: center;
     }
 }

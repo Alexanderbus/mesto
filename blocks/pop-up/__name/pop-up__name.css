@@ -1,0 +1,54 @@
+.pop-up__name:focus {
+    outline: none !important;
+}
+
+@media screen and (max-width:767px){
+    .pop-up__name {
+        border: none;
+        border-bottom: 1px solid black;
+        width: 74.375vw;
+        margin-top: 23.43vw;
+        margin-left: 6.875vw;
+        padding: 0;
+        font-family: Inter;
+        font-size: 4.375vw;
+        font-weight: 400;
+        line-height: 5.3125vw;
+        text-align: left;
+    }
+    }
+
+
+@media screen and (min-width: 768px) and (max-width:1279px) {
+    .pop-up__name {
+        border: none;
+        border-bottom: 1px solid black;
+        width: 46.614vw;
+        height: 2.1875vw;
+        margin-top: 4.22vw;
+        margin-left: 4.6875vw;
+        padding: 0;
+        font-family: Inter;
+        font-size: 1.1vw;
+        font-weight: 400;
+        line-height: 1.3vw;
+        text-align: left;
+    }
+}
+
+@media screen and (min-width:1280px) {
+    .pop-up__name {
+        border: none;
+        border-bottom: 1px solid black;
+        width: 358px;
+        height: 28px;
+        margin-top: 54px;
+        margin-left: 36px;
+        padding: 0;
+        font-family: Inter;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 17px;
+        text-align: left;
+    }
+}

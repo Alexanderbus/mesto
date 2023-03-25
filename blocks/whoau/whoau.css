@@ -3,6 +3,9 @@
     font-weight: 400;
     color: #fff;
     margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 767px) {
@@ -10,6 +13,9 @@
         font-size: 4.5vw;
         text-align: center;
         margin-top: 22.25px;
+        max-width: 80vw;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
@@ -20,6 +26,10 @@
         letter-spacing: 0em;
         text-align: left;
         margin-top: 16px;
+        max-width: 25vw;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
     }
 }
 
@@ -29,5 +39,9 @@
         line-height: 22px;
         text-align: left;
         margin-top: 16px;
+        max-width: 320px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
     }
 }

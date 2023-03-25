@@ -1,3 +1,7 @@
+.add-photo:hover {
+    opacity: 0.5;
+}
+
 @media screen and (max-width:767px) {
     .add-photo {
         background-color: rgba(28,28,28,0);
@@ -9,6 +13,9 @@
         margin-bottom: 36px;
         padding: 0;
         display: inline-block;
+        background-image: url('../../images/plus.png');
+        background-repeat: no-repeat;
+        background-position: center;
     }
 }
 
@@ -19,7 +26,12 @@
         height: 3.90625vw;
         width: 11.71875vw;
         margin-top: 75px;
-        margin-left: 102px;
+        margin-left: auto;
+        margin-left: 15.625vw;
+        background-image: url('../../images/plus.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 15%;
     }
 }
 
@@ -30,6 +42,11 @@
         height: 50px;
         width: 150px;
         margin-top: 75px;
-        margin-left: 244px;
+        margin-left: auto;
+        margin-right: calc((100vw - 880px) / 2);
+        background-image: url('../../images/plus.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 22px 22px;
     }
 }
