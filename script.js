@@ -13,10 +13,12 @@ buttonpop.addEventListener('click', (e) => {
         popwhoau.setAttribute("placeholder", whoau.textContent);
     })
 
-let like = document.querySelector('.card__like');
-like.addEventListener('click', (e) => { 
-like.classList.toggle('card__like_active'); 
-})
+let like = document.querySelectorAll('.card__like');
+like.forEach(like => { 
+        like.addEventListener('click', (e) => { 
+            like.classList.toggle('card__like_active'); 
+            })
+      });
 
 closebutton.addEventListener('click', (e) => { 
     openpop.classList.remove('pop-up_opened');
@@ -25,8 +27,6 @@ closebutton.addEventListener('click', (e) => {
   closebutton.addEventListener('click', (e) => { 
     openpop.classList.remove('pop-up_opened');
 })
-
-
 
 changhename.addEventListener('click', (e) => {
     if (popname.value.length > 0 && popwhoau.value.length > 0) {

@@ -1,7 +1,3 @@
-.card__like:hover {
-    opacity: .5;
-}
-
 @media screen and (max-width:767px) {
     .card__like {
         margin: 0;
@@ -30,5 +26,8 @@
         background-size: contain;
         background-repeat: no-repeat;
         margin-top: 7px;
+    }
+    .add-photo:hover {
+        opacity: 0.5;
     }
 }

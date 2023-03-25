@@ -1,7 +1,3 @@
-.pop-up__exit:hover {
-    opacity: .5;
-}
-
 @media screen and (max-width:767px){
     .pop-up__exit {
         background-color: rgba(28,28,28,0);
@@ -30,6 +26,9 @@
         margin-left: 57.03vw;
         border: 0;
     }
+    .add-photo:hover {
+        opacity: 0.5;
+    }
 }
 
 @media screen and (min-width:1280px) {
@@ -44,5 +43,8 @@
         margin-top: -40px;
         margin-left: 438px;
         border: 0;
+    }
+    .add-photo:hover {
+        opacity: 0.5;
     }
 }
