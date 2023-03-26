@@ -1,3 +1,7 @@
 .card__like_active {
-    background-image: url('../../../../images/blackheart.png');
+    background-image: url('../../../../images/blcakeatr.svg');
+}
+
+.card__like_active:hover {
+    opacity: .5;
 }

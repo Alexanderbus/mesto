@@ -1,55 +1,43 @@
+.pop-up__whoau {
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    padding: 0;
+}
+
 .pop-up__whoau:focus {
     outline: none;
 }
 
 @media screen and (max-width:767px){
     .pop-up__whoau {
-        border: none;
-        border-bottom: 1px solid black;
         width: 74.375vw;
         height: 8.75vw;
         margin-top: 9.375vw;
-        margin-left: 6.875vw;
-        padding: 0;
-        font-family: Inter;
         font-size: 4.375vw;
-        font-weight: 400;
         line-height: 5.3125vw;
-        text-align: left;
+        margin-left: 6.875vw;
     }
 }
 
 @media screen and (min-width: 768px) and (max-width:1279px) {
     .pop-up__whoau {
-        border: none;
-        border-bottom: 1px solid black;
-        width: 46.614vw;
+        width: 27.97vw;
         height: 2.1875vw;
-        margin-top: 2.34vw;
-        margin-left: 4.6875vw;
-        padding: 0;
-        font-family: Inter;
-        font-size: 1.1vw;
-        font-weight: 400;
-        line-height: 1.3vw;
-        text-align: left;
+        margin-top: 4.0625vw;
+        font-size: 1.094vw;
+        line-height: 1.33vw;
+        margin-left: 2.8125vw;
     }
     }
 
 
 @media screen and (min-width:1280px) {
     .pop-up__whoau {
-        border: none;
-        border-bottom: 1px solid black;
         width: 358px;
-        margin-top: 30px;
-        margin-left: 36px;
-        padding: 0;
+        margin-top: 28px;
         height: 28px;
-        font-family: Inter;
         font-size: 14px;
-        font-weight: 400;
         line-height: 17px;
-        text-align: left;
+        margin-left: 36px;
     }
 }

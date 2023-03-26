@@ -1,29 +1,40 @@
 .pop-up__edit {
     background-color: rgba(0, 0, 0);
+    padding: 0;
+    font-weight: 400;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+    border-radius: 2px;
+}
+
+.pop-up__edit:hover {
+    background-color: rgba(0, 0, 0, .8); 
 }
 
 @media screen and (max-width:767px){
     .pop-up__edit  {
         width: 74.375vw;
-        height: 14.375vw;
+        min-height: 14.375vw;
         margin-top: 14.0624vw;
-        margin-left: 6.875vw;
-        padding: 0;
         border: none;
+        font-size: 4.375vw;
+        line-height: 5.3125vw;
+        margin-bottom: 7.8125vw;
+        margin-left: 6.875vw;
     }
 }
 
 @media screen and (min-width: 768px) and (max-width:1279px) {
     .pop-up__edit {
         border: none;
-        width: 46.614vw;
-        height: 6.51vw;
-        margin-left: 4.6875vw;
-        margin-top: 6.25vw;
-        padding: 0;
-    }
-    .pop-up__edit:hover {
-        background-color: rgba(0, 0, 0, .5); 
+        width: 27.98vw;
+        min-height: 3.906vw;
+        margin-top: 3.75vw;
+        font-size: 1.406vw;
+        line-height: 1.719vw;
+        margin-bottom: 2.891vw;
+        margin-left: 2.8125vw;
     }
 }
 
@@ -31,12 +42,11 @@
     .pop-up__edit {
         border: none;
         width: 358px;
-        height: 50px;
-        margin-left: 36px;
+        min-height: 50px;
         margin-top: 48px;
-        padding: 0;
-    }
-    .pop-up__edit:hover {
-        background-color: rgba(0, 0, 0, .5); 
+        font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 37px;
+        margin-left: 36px;
     }
 }

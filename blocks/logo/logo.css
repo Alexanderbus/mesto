@@ -13,13 +13,6 @@
         height: 33px;
         width: 142px;
         margin-top: 45px;
-        margin-left: 15.625vw;
         margin-bottom: 41px;
     }    
-}
-
-@media screen and (min-width: 1280px) {
-    .logo {
-        margin-left: calc((100vw - 880px) / 2);
-    }
 }

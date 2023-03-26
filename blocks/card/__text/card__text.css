@@ -1,12 +1,14 @@
+.card__text {
+    margin: 0;
+    font-weight: 900;
+    text-align: left;
+    display: inline-block;
+}
+
 @media screen and (max-width:767px) {
     .card__text {
-        margin: 0;
-        font-family: Inter;
         font-size: 7.5vw;
-        font-weight: 900;
         line-height: 9.0625vw;
-        text-align: left;
-        display: inline-block;
         margin-left: 6.5625vw;
         margin-right: 23.4375vw;  
     }
@@ -14,13 +16,8 @@
 
 @media screen and (min-width:768px) {
     .card__text {
-        margin: 0;
-        font-family: Inter;
         font-size: 24px;
-        font-weight: 900;
         line-height: 29.05px;
-        text-align: left;
-        display: inline-block;
         margin-left: 21px;
     }
 }

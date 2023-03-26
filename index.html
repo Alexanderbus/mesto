@@ -4,34 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="vendor/normalize.css">
     <link rel="stylesheet" href="pages/index.css">
-    <title>Mesto</title>
+    <title>Место</title>
 </head>
 <body>
 <div class="page">
     <header class="header">
         <img class="logo" src="images/logo.svg" alt="лого">
-        <div class="header__line"></div>
     </header>
     <main class="content">
         <div class="profile">
-            <img class="avatar" src="images/avatar.png" alt="аватар">
+            <img class="avatar" src="images/avatar.svg" alt="аватар">
             <div class="profile__info">
-                <h2 class="name">Жак-Ив Кусто</h2>
-                <button class="profile__button"></button>
-                <p class="whoau">Исследователь океана</p>
+                <h1 class="profile__name">Жак-Ив Кусто</h2>
+                <button class="profile__button" type="button"></button>
+                <p class="profile__whoau">Исследователь океана</p>
             </div>
-            <button class="add-photo"></button>
-        </div>
-        <div class="pop-up">
-            <div class="pop-up__container">
-            <button class="pop-up__exit"></button>
-            <h2 class="pop-up__header">Редактировать профиль</h2>
-            <input class="pop-up__name" type="text">
-            <input class="pop-up__whoau" type="text">
-            <button class="pop-up__edit" type="submit"><p class='pop-up__buttontext'>Сохранить</p></button>
-            </div>
+            <button class="profile__add-photo" type="button"></button>
         </div>
         <div class="cards">
             <div class="card">
@@ -82,7 +71,19 @@
     <footer class="footer">
         <p class="copyright">© 2023 Mesto Russia</p>
     </footer>
+    <div class="pop-up">
+        <div class="pop-up__container">
+            <button class="pop-up__exit" type="button"></button>
+            <h2 class="pop-up__header">Редактировать профиль</h2>
+            <form class="form" name="editor">
+            <input class="pop-up__input pop-up__input_role_name" name="name" type="text">
+            <input class="pop-up__input pop-up__input_role_about" name="about" type="text">
+            <button class="pop-up__edit" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
 </div>
-<script src="script.js"></script>
+<script src="scripts/Profile.js"></script>
+<script src="scripts/like.js"></script>
 </body>
 </html>
