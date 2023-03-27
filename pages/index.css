@@ -13,7 +13,7 @@
 @import url('../blocks/card/__text/card__text.css');
 @import url('../blocks/card/__info/card__info.css');
 @import url('../blocks/footer/footer.css');
-@import url('../blocks/copyright/copyright.css');
+@import url('../blocks/footer/__copyright/footer__copyright.css');
 @import url('../blocks/cards/cards.css');
 @import url('../blocks/pop-up/pop-up.css');
 @import url('../blocks/pop-up/__header/pop-up__header.css');

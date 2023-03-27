@@ -1,4 +1,4 @@
-.copyright {
+.footer__copyright {
     font-weight: 400;
     text-align: left;
     display: inline-block;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width:767px) {
-    .copyright {
+    .footer__copyright {
         font-size: 4.375vw;
         line-height: 5.3125vw;
         margin-left: 5.9375vw;
@@ -16,7 +16,7 @@
 }
 
 @media screen and (min-width:768px) {
-    .copyright {
+    .footer__copyright {
         font-size: 18px;
         line-height: 22px;
         margin-left: 20.1vw;
@@ -24,7 +24,7 @@
 }
 
 @media screen and (min-width:1280px) {
-    .copyright {
+    .footer__copyright {
         margin-left: calc((100vw - 880px) / 2);
     }
 }
