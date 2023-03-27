@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,83 +8,83 @@
     <link rel="stylesheet" href="pages/index.css">
     <title>Место</title>
 </head>
+
 <body>
-<div class="page">
-    <header class="header">
-        <img class="logo" src="images/logo.svg" alt="лого">
-    </header>
-    <main class="content">
-        <div class="profile">
-            <img class="avatar" src="images/avatar.svg" alt="аватар">
-            <div class="profile__info">
-                <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <button class="profile__button" type="button"></button>
-                <p class="profile__whoau">Исследователь океана</p>
+    <div class="page">
+        <header class="header">
+            <img class="logo" src="images/logo.svg" alt="лого">
+        </header>
+        <main class="content">
+            <section class="profile">
+                <div class="avatar"></div>
+                <div class="profile__info">
+                    <h1 class="profile__name">Жак-Ив Кусто</h1>
+                    <button class="profile__button" type="button"></button>
+                    <p class="profile__whoau">Исследователь океана</p>
+                </div>
+                <button class="profile__add-photo" type="button"></button>
+            </section>
+            <section class="cards">
+                <div class="card">
+                    <img class="card__photo" alt="фотокарточка" src="images/test.png">
+                    <div class="card__info">
+                        <h2 class="card__text">Test card#1</h2>
+                        <button class="card__like" type="button"></button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card__photo" alt="фотокарточка" src="images/test.png">
+                    <div class="card__info">
+                        <h2 class="card__text">Test card#2</h2>
+                        <button class="card__like" type="button"></button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card__photo" alt="фотокарточка" src="images/test.png">
+                    <div class="card__info">
+                        <h2 class="card__text">Test card#3</h2>
+                        <button class="card__like" type="button"></button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card__photo" alt="фотокарточка" src="images/test.png">
+                    <div class="card__info">
+                        <h2 class="card__text">Test card#4</h2>
+                        <button class="card__like" type="button"></button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card__photo" alt="фотокарточка" src="images/test.png">
+                    <div class="card__info">
+                        <h2 class="card__text">Test card#5</h2>
+                        <button class="card__like" type="button"></button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card__photo" alt="фотокарточка" src="images/test.png">
+                    <div class="card__info">
+                        <h2 class="card__text">Test card#6</h2>
+                        <button class="card__like" type="button"></button>
+                    </div>
+                </div>
+        </main>
+        <footer class="footer">
+            <p class="footer__copyright">© 2023 Mesto Russia</p>
+        </footer>
+        <div class="pop-up">
+            <div class="pop-up__container">
+                <button class="pop-up__exit" type="button"></button>
+                <h2 class="pop-up__header">Редактировать профиль</h2>
+                <form class="form" name="editor">
+                    <input class="pop-up__input pop-up__input_role_name" placeholder="Имя" name="name" type="text">
+                    <input class="pop-up__input pop-up__input_role_about" placeholder="О себе" name="about" type="text">
+                    <button class="pop-up__edit" type="submit">Сохранить</button>
+                </form>
             </div>
-            <button class="profile__add-photo" type="button"></button>
-        </div>
-        <div class="cards">
-            <div class="card">
-                <img class="card__photo" alt="фотокарточка" src="images/test.png">
-                <div class="card__info">
-                    <h2 class="card__text">Test card#1</h2>
-                    <button class="card__like"></button>
-                </div>    
-            </div>
-            <div class="card">
-                <img class="card__photo" alt="фотокарточка" src="images/test.png">
-                <div class="card__info">
-                    <h2 class="card__text">Test card#2</h2>
-                    <button class="card__like"></button>
-                </div>    
-            </div>
-            <div class="card">
-                <img class="card__photo" alt="фотокарточка" src="images/test.png">
-                <div class="card__info">
-                    <h2 class="card__text">Test card#3</h2>
-                    <button class="card__like"></button>
-                </div>    
-            </div>
-            <div class="card">
-                <img class="card__photo" alt="фотокарточка" src="images/test.png">
-                <div class="card__info">
-                    <h2 class="card__text">Test card#4</h2>
-                    <button class="card__like"></button>
-                </div>    
-            </div>
-            <div class="card">
-                <img class="card__photo" alt="фотокарточка" src="images/test.png">
-                <div class="card__info">
-                    <h2 class="card__text">Test card#5</h2>
-                    <button class="card__like"></button>
-                </div>    
-            </div>
-            <div class="card">
-                <img class="card__photo" alt="фотокарточка" src="images/test.png">
-                <div class="card__info">
-                    <h2 class="card__text">Test card#6</h2>
-                    <button class="card__like"></button>
-                </div>    
-            </div>
-           
-        </div>
-    </main>
-    <footer class="footer">
-        <p class="footer__copyright">© 2023 Mesto Russia</p>
-    </footer>
-    <div class="pop-up">
-        <div class="pop-up__container">
-            <button class="pop-up__exit" type="button"></button>
-            <h2 class="pop-up__header">Редактировать профиль</h2>
-            <form class="form" name="editor">
-            <input class="pop-up__input pop-up__input_role_name" name="name" type="text">
-            <input class="pop-up__input pop-up__input_role_about" name="about" type="text">
-            <button class="pop-up__edit" type="submit">Сохранить</button>
-            </form>
         </div>
     </div>
-</div>
-<script src="scripts/Profile.js"></script>
-<script src="scripts/like.js"></script>
+    <script src="scripts/Profile.js"></script>
+    <script src="scripts/like.js"></script>
 </body>
+
 </html>

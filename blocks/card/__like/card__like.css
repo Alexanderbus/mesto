@@ -6,6 +6,7 @@
     background-image: url('../../../images/like.svg');
     background-size: contain;
     background-repeat: no-repeat;
+    cursor: pointer;
 }
 
 .card__like:hover {
@@ -17,12 +18,13 @@
         width: 6.875vw;
         height: 6.875vw;
         margin-top: 1.5625vw;
+        margin-left: 1.5625vw;
     }    
 }
 
 @media screen and (min-width:768px) {
     .card__like {
-        margin-left: 70px;
+        margin-left: 5px;
         width: 22px;
         height: 19px;
         margin-top: 7px;

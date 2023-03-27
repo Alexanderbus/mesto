@@ -13,8 +13,7 @@
 
 @media screen and (min-width:767px) and (max-width:1279px) {
     .profile {
-        margin-right: 15.625vw;
-        justify-content: space-around;
+        justify-content: center;
     }
 }
 

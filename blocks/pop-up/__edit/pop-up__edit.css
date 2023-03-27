@@ -6,6 +6,8 @@
     color: #fff;
     margin: 0;
     border-radius: 2px;
+    cursor: pointer;
+    border: none;
 }
 
 .pop-up__edit:hover {
@@ -17,7 +19,6 @@
         width: 74.375vw;
         min-height: 14.375vw;
         margin-top: 14.0624vw;
-        border: none;
         font-size: 4.375vw;
         line-height: 5.3125vw;
         margin-bottom: 7.8125vw;
@@ -27,7 +28,6 @@
 
 @media screen and (min-width: 768px) and (max-width:1279px) {
     .pop-up__edit {
-        border: none;
         width: 27.98vw;
         min-height: 3.906vw;
         margin-top: 3.75vw;
@@ -40,7 +40,6 @@
 
 @media screen and (min-width:1280px) {
     .pop-up__edit {
-        border: none;
         width: 358px;
         min-height: 50px;
         margin-top: 48px;

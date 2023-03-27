@@ -13,7 +13,7 @@
   font-style:  normal;
   font-weight: 500;
   font-display: swap;
-  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+  src: url('Inter-Medium.ttf') format("ttf");
 }
 
 @font-face {

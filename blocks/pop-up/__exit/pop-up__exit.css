@@ -5,6 +5,8 @@
     background-image: url('../../../images/exit.svg');
     background-size: contain;
     background-repeat: no-repeat;
+    cursor: pointer;
+    padding: 0;
 }
 
 .pop-up__exit:hover {
@@ -16,7 +18,7 @@
         width: 6.25vw;
         height: 6.25vw;
         top: -11.25vw;
-        left: 81.875vw;
+        right: 0;
     }
 }
 
@@ -25,7 +27,7 @@
         width: 2.5vw;
         height: 2.5vw;
         top: -3.125vw;
-        left: 34.29vw;
+        right: -3.125vw;
     }
 }
 
@@ -34,6 +36,6 @@
         width: 32px;
         height: 32px;
         top: -40px;
-        left: 438px;
+        right: -40px;
     }
 }

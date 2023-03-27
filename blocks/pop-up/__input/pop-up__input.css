@@ -8,7 +8,7 @@
     outline: none;
 }
 
-@media screen and (max-width:767px){
+@media screen and (max-width:767px) {
     .pop-up__input {
         width: 74.375vw;
         height: 8.75vw;
@@ -28,7 +28,7 @@
         line-height: 1.33vw;
         margin-left: 2.8125vw;
     }
-    }
+}
 
 
 @media screen and (min-width:1280px) {

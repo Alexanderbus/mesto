@@ -17,8 +17,6 @@
 @import url('../blocks/cards/cards.css');
 @import url('../blocks/pop-up/pop-up.css');
 @import url('../blocks/pop-up/__header/pop-up__header.css');
-@import url('../blocks/pop-up/__name/pop-up__name.css');
-@import url('../blocks/pop-up/__whoau/pop-up__whoau.css');
 @import url('../blocks/pop-up/__edit/pop-up__edit.css');
 @import url('../blocks/pop-up/__exit/pop-up__exit.css');
 @import url('../blocks/pop-up/__container/pop-up__container.css');
