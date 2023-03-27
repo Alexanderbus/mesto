@@ -13,7 +13,7 @@
     opacity: .6;
 }
 
-@media screen and (max-width:767px){
+@media screen and (max-width:767px) {
     .pop-up__exit {
         width: 6.25vw;
         height: 6.25vw;
@@ -22,7 +22,7 @@
     }
 }
 
-@media screen and (min-width:768px) and (max-width:1279px){
+@media screen and (min-width:768px) and (max-width:1279px) {
     .pop-up__exit {
         width: 2.5vw;
         height: 2.5vw;

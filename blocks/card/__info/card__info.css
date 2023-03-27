@@ -7,11 +7,11 @@
 }
 
 @media screen and (max-width:767px) {
-.card__info {
-    margin-top: -4px;
-    margin-left: 5.9375vw;
-    width: 88.125vw;
-}
+    .card__info {
+        margin-top: -4px;
+        margin-left: 5.9375vw;
+        width: 88.125vw;
+    }
 }
 
 @media screen and (min-width:768px) {
@@ -19,4 +19,4 @@
         margin-top: -4px;
         width: 282px;
     }
-    }
+}

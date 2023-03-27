@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     border: 0;
-    background-color: rgba(28,28,28,0);
+    background-color: rgba(28, 28, 28, 0);
     background-image: url('../../../images/like.svg');
     background-size: contain;
     background-repeat: no-repeat;
@@ -19,7 +19,7 @@
         height: 6.875vw;
         margin-top: 1.5625vw;
         margin-left: 1.5625vw;
-    }    
+    }
 }
 
 @media screen and (min-width:768px) {

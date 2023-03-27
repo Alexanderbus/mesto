@@ -2,7 +2,7 @@
     .footer {
         padding-top: 8.75vw;
         padding-bottom: 36px;
-    }   
+    }
 }
 
 @media screen and (min-width:768px) {
@@ -11,4 +11,3 @@
         padding-bottom: 60px;
     }
 }
-

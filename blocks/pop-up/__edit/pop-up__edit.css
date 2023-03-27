@@ -11,11 +11,11 @@
 }
 
 .pop-up__edit:hover {
-    background-color: rgba(0, 0, 0, .8); 
+    background-color: rgba(0, 0, 0, .8);
 }
 
-@media screen and (max-width:767px){
-    .pop-up__edit  {
+@media screen and (max-width:767px) {
+    .pop-up__edit {
         width: 74.375vw;
         min-height: 14.375vw;
         margin-top: 14.0624vw;

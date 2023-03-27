@@ -4,13 +4,13 @@
 }
 
 @media screen and (max-width:767px) {
-.pop-up__header {
-    font-size: 5.625vw;
-    line-height: 6.875vw;
-    text-align: center;
-    margin-top: 7.8125vw;
-    margin-bottom: 13.4375vw;
-}
+    .pop-up__header {
+        font-size: 5.625vw;
+        line-height: 6.875vw;
+        text-align: center;
+        margin-top: 7.8125vw;
+        margin-bottom: 13.4375vw;
+    }
 }
 
 @media screen and (min-width: 768px) and (max-width:1279px) {
