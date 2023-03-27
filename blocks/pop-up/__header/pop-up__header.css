@@ -9,6 +9,7 @@
     line-height: 6.875vw;
     text-align: center;
     margin-top: 7.8125vw;
+    margin-bottom: 13.4375vw;
 }
 }
 
@@ -17,7 +18,7 @@
         font-size: 1.876vw;
         line-height: 2.27vw;
         text-align: left;
-        margin: 2.67vw 0 0 2.8125vw;
+        margin: 2.67vw 0 1.875vw 2.8125vw;
         height: 1.8vw;
 
     }
@@ -28,7 +29,7 @@
         font-size: 24px;
         line-height: 29px;
         text-align: left;
-        margin: 34px 0 0 36px;
+        margin: 34px 0 24px 36px;
         height: 23px;
     }
 }
