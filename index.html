@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pages/index.css">
     <title>Место</title>
+    <script src="scripts/index.js" defer></script>
 </head>
 
 <body>
@@ -25,48 +26,6 @@
                 <button class="profile__add-photo" type="button"></button>
             </section>
             <section class="cards">
-                <div class="card">
-                    <img class="card__photo" alt="фотокарточка" src="images/test.png">
-                    <div class="card__info">
-                        <h2 class="card__text">Test card#1</h2>
-                        <button class="card__like" type="button"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__photo" alt="фотокарточка" src="images/test.png">
-                    <div class="card__info">
-                        <h2 class="card__text">Test card#2</h2>
-                        <button class="card__like" type="button"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__photo" alt="фотокарточка" src="images/test.png">
-                    <div class="card__info">
-                        <h2 class="card__text">Test card#3</h2>
-                        <button class="card__like" type="button"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__photo" alt="фотокарточка" src="images/test.png">
-                    <div class="card__info">
-                        <h2 class="card__text">Test card#4</h2>
-                        <button class="card__like" type="button"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__photo" alt="фотокарточка" src="images/test.png">
-                    <div class="card__info">
-                        <h2 class="card__text">Test card#5</h2>
-                        <button class="card__like" type="button"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__photo" alt="фотокарточка" src="images/test.png">
-                    <div class="card__info">
-                        <h2 class="card__text">Test card#6</h2>
-                        <button class="card__like" type="button"></button>
-                    </div>
-                </div>
             </section>
         </main>
         <footer class="footer">
@@ -77,15 +36,33 @@
                 <button class="pop-up__exit" type="button"></button>
                 <h2 class="pop-up__header">Редактировать профиль</h2>
                 <form class="form" name="editor">
-                    <input class="pop-up__input pop-up__input_role_name" placeholder="Имя" name="name" type="text">
-                    <input class="pop-up__input pop-up__input_role_about" placeholder="О себе" name="about" type="text">
+                    <input class="pop-up__input pop-up__input_role_name" name="name" type="text">
+                    <input class="pop-up__input pop-up__input_role_about" name="about" type="text">
                     <button class="pop-up__edit" type="submit">Сохранить</button>
                 </form>
             </div>
         </div>
+        <div class="pop-up-2">
+            <div class="pop-up-2__container">
+                <button class="pop-up-2__exit" type="button"></button>
+                <h2 class="pop-up-2__header">Новое место</h2>
+                <form class="form2" name="editor2">
+                    <input class="pop-up-2__input pop-up-2__input_role_name" name="name2" type="text" placeholder="Название">
+                    <input class="pop-up-2__input pop-up-2__input_role_link" name="link" type="link" placeholder="Ссылка на картинку">
+                    <button class="pop-up-2__edit" type="submit">Сохранить</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <script src="scripts/Profile.js"></script>
-    <script src="scripts/like.js"></script>
+    <template class="card-template">
+        <div class="card">
+            <img class="card__photo" alt="фотокарточка" id='link'>
+            <div class="card__info">
+                <h2 class="card__text" id="name"></h2>
+                <button class="card__like" type="button"></button>
+            </div>
+        </div>
+    </template>
 </body>
 
 </html>
