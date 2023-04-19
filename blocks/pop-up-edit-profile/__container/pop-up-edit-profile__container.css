@@ -1,4 +1,4 @@
-.pop-up-2__container {
+.pop-up-edit-profile__container {
     position: relative;
     background-color: #fff;
     border-radius: 10px;
@@ -6,19 +6,19 @@
 }
 
 @media screen and (max-width: 767px) {
-    .pop-up-2__container {
+    .pop-up-edit-profile__container {
         width: 88.125vw;
     }
 }
 
 @media screen and (min-width: 768px) and (max-width:1279px) {
-    .pop-up-2__container {
+    .pop-up-edit-profile__container {
         width: 33.593vw;
     }
 }
 
 @media screen and (min-width:1280px) {
-    .pop-up-2__container {
+    .pop-up-edit-profile__container {
         width: 430px;
     }
 }

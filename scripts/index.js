@@ -1,35 +1,7 @@
-// все связанное с карточками
-const initialCards = [
-    {
-        name: '1 капибара',
-        link: 'https://animals.pibig.info/uploads/posts/2023-04/thumbs/1680614581_animals-pibig-info-p-grizun-kapibara-zhivotnie-pinterest-1.jpg'
-    },
-    {
-        name: '2 капибары',
-        link: 'https://api.360tv.ru/get_resized/480bwHYWmy6mtHqJ8gMbR4Wg-oWZtH46xCsEbpL7kXw/rs:fill-down:1920:1080/g:fp:0.5:0.5/aHR0cHM6Ly8yNTc4MjQuc2VsY2RuLnJ1L2JhYnlsb24tbWVkaWEvaW1hZ2VzL2FydGljbGVzL2NvdmVyL2I3MDcxMTYwLTg3OGItNGI1NC1iYjY3LTU3MjQyODM5NGU3Yy9jYXB5YmFyYS02MDkxODcyXzE5MjAuanBn.webp'
-    },
-    {
-        name: '3 капибары',
-        link: 'https://c0.wallpaperflare.com/preview/638/845/68/animals-capybara-close-up-cute.jpg'
-    },
-    {
-        name: '4 капибары',
-        link: 'https://i.pinimg.com/originals/ac/6f/da/ac6fdaaaa8cf86fb95558b9028b4f993.jpg'
-    },
-    {
-        name: '5 капибар',
-        link: 'https://cojo.ru/wp-content/uploads/2022/12/vodosvinka-kapibara-amazonka-1.webp'
-    },
-    {
-        name: 'стая капибар',
-        link: 'https://cojo.ru/wp-content/uploads/2022/12/kapibara-zhivotnoe-1.webp'
-    }
-];
-
-//создаем удомную функию для открытия поп апа
-const openPopup = (popup) => {
-    popup.classList.add('pop-up_opened');
-}
+//создаем удомную функию для открытия поп-апа
+const openPopup = (popup) => { popup.classList.add('popup_opened') };
+//создаем функцию для закрытия поп-апа
+const closePopup = (popup) => { popup.classList.remove('popup_opened') };
 
 const cardTemplate = document.querySelector('.card-template');
 const cardsContainer = document.querySelector('.cards')
@@ -39,7 +11,7 @@ const createCard = (cardData) => {
     const cardElement = cardTemplate.content.querySelector('.card').cloneNode(true);
     const cardName = cardElement.querySelector('.card__text');
     const cardImage = cardElement.querySelector('.card__photo');
-    cardName.innerHTML = cardData.name;
+    cardName.textContent = cardData.name;
     cardImage.src = cardData.link;
 
     //кнопка лайк
@@ -48,27 +20,30 @@ const createCard = (cardData) => {
         likeButton.classList.toggle('card__like_active');
     })
 
+    //кнопка удалить карточку
     const delButton = cardElement.querySelector('.card__trash')
     delButton.addEventListener('click', () => {
         cardElement.remove();
     })
 
-    const popupImage = document.querySelector('.pop-up-image').cloneNode(true);;
-    const popTitle = popupImage.querySelector('.pop-up-image__title');
-    const popPic = popupImage.querySelector('.pop-up-image__pic');
-    const page = document.querySelector('.page');
-    const CloseBtn3 = popupImage.querySelector('.pop-up-image__closeBtn');
-    popTitle.innerHTML = cardData.name;
-    popPic.src = cardData.link;
+    //отркрываем зум поп ап
+    const popupImage = document.querySelector('.pop-up-image')
+    const popUpZoomTitle = document.querySelector('.pop-up-image__title');
+    const popUpZoomImage = document.querySelector('.pop-up-image__pic');
+    const handlePreviewPicture = (cardData) => {
+        popUpZoomTitle.textContent = cardData.name;
+        popUpZoomImage.src = cardData.link;
+        openPopup(popupImage)
+    }
 
     cardImage.addEventListener('click', () => {
-        openPopup(popupImage)
+        handlePreviewPicture(cardData)
     })
 
-    page.append(popupImage)
-
-    CloseBtn3.addEventListener('click', () => {
-       popupImage.classList.remove('pop-up_opened')
+    //закрываем зум поп ап
+    const closeZoomImage = popupImage.querySelector('.pop-up-image__closeBtn');
+    closeZoomImage.addEventListener('click', () => {
+        closePopup(popupImage)
     })
 
     //запускаем
@@ -84,81 +59,83 @@ initialCards.forEach((card) => {
     addCard(createCard(card));
 });
 
-const addPhoto = document.querySelector('.profile__add-photo');
-const popup2 = document.querySelector('.pop-up-2')
-const namePhoto = document.querySelector('.pop-up-2__input_role_name')
-const linkPhoto = document.querySelector('.pop-up-2__input_role_link')
+const buttonAddPhoto = document.querySelector('.profile__add-photo');
+const popupAddPhoto = document.querySelector('.pop-up-add-photo')
+const namePhotoPopup = document.querySelector('.pop-up-add-photo__input_role_name')
+const linkPhotoPopup = document.querySelector('.pop-up-add-photo__input_role_link')
 
 //открытие поп апа
-addPhoto.addEventListener('click', function () {
-    openPopup(popup2);
-    namePhoto.value = '';
-    linkPhoto.value = '';
+buttonAddPhoto.addEventListener('click', function () {
+    openPopup(popupAddPhoto);
+    namePhotoPopup.value = '';
+    linkPhotoPopup.value = '';
 })
 
-const closeBtn2 = document.querySelector('.pop-up-2__exit')
+const closePopupAddPhoto = document.querySelector('.pop-up-add-photo__exit')
 //закрытие поп апа
-closeBtn2.addEventListener('click', function () {
-    popup2.classList.remove('pop-up_opened');
+closePopupAddPhoto.addEventListener('click', function () {
+    closePopup(popupAddPhoto);
 })
 
 
 function addNewCard(evt) {
     evt.preventDefault();
-    if (linkPhoto.value.startsWith('http') == 1) {
-        const valueName = namePhoto.value;
-        const valueLink = linkPhoto.value;
+    if (linkPhotoPopup.value.startsWith('http') == 1) {
+        const valueName = namePhotoPopup.value;
+        const valueLink = linkPhotoPopup.value;
         const NewCard = {
             name: valueName,
             link: valueLink
         }
-        popup2.classList.remove('pop-up_opened');
+        popupAddPhoto.classList.remove('pop-up_opened');
         addCard(createCard(NewCard))
     }
     else {
-        namePhoto.setAttribute("placeholder", 'Введите имя!');
-        linkPhoto.setAttribute("placeholder", 'ССЫЛКУ ВВЕДИ!');
-        namePhoto.value = '';
-        linkPhoto.value = '';
+        namePhotoPopup.setAttribute("placeholder", 'Введите имя!');
+        linkPhotoPopup.setAttribute("placeholder", 'ССЫЛКУ ВВЕДИ!');
+        namePhotoPopup.value = '';
+        linkPhotoPopup.value = '';
     }
 }
 
-editor2.addEventListener('submit', addNewCard)
+editorAddPhoto.addEventListener('submit', addNewCard)
 
 // попап редактирования профиля
-let editProfileBtn = document.querySelector('.profile__button');
-let popup = document.querySelector('.pop-up');
-let editor = document.editor;
-let myName = editor.name;
-let about = editor.about;
-let whoAU = document.querySelector('.profile__whoau');
-let nickName = document.querySelector('.profile__name');
-let closeBtn = document.querySelector('.pop-up__exit');
+const editProfileBtn = document.querySelector('.profile__button');
+const popupEditProfile = document.querySelector('.pop-up-edit-profile');
+const popupEditProfileEditor = document.EditProfile;
+const InputNameProfile = popupEditProfileEditor.nameEditProfile;
+const InputHobbyProfile = popupEditProfileEditor.aboutEditProfile;
+const HobbyProfile = document.querySelector('.profile__whoau');
+const nameProfile = document.querySelector('.profile__name');
+const closePopupEdit = document.querySelector('.pop-up-edit-profile__exit');
 
 //открытие поп апа
 editProfileBtn.addEventListener('click', function () {
-    openPopup(popup);
-    myName.value = nickName.textContent;
-    about.value = whoAU.textContent;
+    openPopup(popupEditProfile);
+    InputNameProfile.setAttribute("placeholder", 'Имя');
+    InputHobbyProfile.setAttribute("placeholder", 'Хобби');
+    InputNameProfile.value = nameProfile.textContent;
+    InputHobbyProfile.value = HobbyProfile.textContent;
 })
 
 //функция по редактированию профиля
-function handleFormSubmit(evt) {
+function handleFormSubmitProfile(evt) {
     evt.preventDefault();
-    if (myName.value.length > 0 && about.value.length > 0) {
-        nickName.textContent = myName.value;
-        whoAU.textContent = about.value;
-        popup.classList.remove('pop-up_opened');
+    if (InputNameProfile.value.length > 0 && InputHobbyProfile.value.length > 0) {
+        nameProfile.textContent = InputNameProfile.value;
+        HobbyProfile.textContent = InputHobbyProfile.value;
+        popupEditProfile.classList.remove('pop-up_opened');
     } else {
-        myName.setAttribute("placeholder", 'Введите имя!');
-        about.setAttribute("placeholder", 'Введите информацию о себе!');
+        InputNameProfile.setAttribute("placeholder", 'Введите имя!');
+        InputHobbyProfile.setAttribute("placeholder", 'Введите информацию о себе!');
     }
 }
 
 //запускаем функцию
-editor.addEventListener('submit', handleFormSubmit);
+popupEditProfileEditor.addEventListener('submit', handleFormSubmitProfile);
 
 //кнопка закрыть попап
-closeBtn.addEventListener('click', function () {
-    popup.classList.remove('pop-up_opened');
+closePopupEdit.addEventListener('click', function () {
+    closePopup(popupEditProfile);
 })

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pages/index.css">
     <title>Место</title>
+    <script src="scripts/cards.js" defer></script>
     <script src="scripts/index.js" defer></script>
 </head>
 
@@ -31,31 +32,31 @@
         <footer class="footer">
             <p class="footer__copyright">© 2023 Mesto Russia</p>
         </footer>
-        <div class="pop-up">
-            <div class="pop-up__container">
-                <button class="pop-up__exit" type="button"></button>
-                <h2 class="pop-up__header">Редактировать профиль</h2>
-                <form class="form" name="editor">
-                    <input class="pop-up__input pop-up__input_role_name" name="name" type="text">
-                    <input class="pop-up__input pop-up__input_role_about" name="about" type="text">
-                    <button class="pop-up__edit" type="submit">Сохранить</button>
+        <div class="pop-up-edit-profile popup">
+            <div class="pop-up-edit-profile__container">
+                <button class="pop-up-edit-profile__exit" type="button"></button>
+                <h2 class="pop-up-edit-profile__header">Редактировать профиль</h2>
+                <form class="form-edit-profile" name="EditProfile">
+                    <input class="pop-up-edit-profile__input pop-up-edit-profile__input_role_name" name="nameEditProfile" type="text">
+                    <input class="pop-up-edit-profile__input pop-up-edit-profile__input_role_about" name="aboutEditProfile" type="text">
+                    <button class="pop-up-edit-profile__save" type="submit">Сохранить</button>
                 </form>
             </div>
         </div>
-        <div class="pop-up-2">
-            <div class="pop-up-2__container">
-                <button class="pop-up-2__exit" type="button"></button>
-                <h2 class="pop-up-2__header">Новое место</h2>
-                <form class="form2" name="editor2">
-                    <input class="pop-up-2__input pop-up-2__input_role_name" name="name2" type="text"
+        <div class="pop-up-add-photo popup">
+            <div class="pop-up-add-photo__container">
+                <button class="pop-up-add-photo__exit" type="button"></button>
+                <h2 class="pop-up-add-photo__header">Новое место</h2>
+                <form class="form-add-photo" name="editorAddPhoto">
+                    <input class="pop-up-add-photo__input pop-up-add-photo__input_role_name" name="name-add-photo" type="text"
                         placeholder="Название">
-                    <input class="pop-up-2__input pop-up-2__input_role_link" name="link" type="url"
+                    <input class="pop-up-add-photo__input pop-up-add-photo__input_role_link" name="link-add-photo" type="url"
                         placeholder="Ссылка на картинку">
-                    <button class="pop-up-2__edit" type="submit">Сохранить</button>
+                    <button class="pop-up-add-photo__edit" type="submit">Сохранить</button>
                 </form>
             </div>
         </div>
-        <div class="pop-up-image">
+        <div class="pop-up-image popup">
             <div class="pop-up-image__container">
                 <img class="pop-up-image__closeBtn" src="images/CloseIcon.svg" alt="кнопка закрытия">
                 <img class="pop-up-image__pic" alt="картинка карточки">

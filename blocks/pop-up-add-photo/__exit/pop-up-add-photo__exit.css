@@ -1,4 +1,4 @@
-.pop-up-2__exit {
+.pop-up-add-photo__exit {
     border: 0;
     position: absolute;
     background-color: transparent;
@@ -9,12 +9,12 @@
     padding: 0;
 }
 
-.pop-up-2__exit:hover {
+.pop-up-add-photo__exit:hover {
     opacity: .6;
 }
 
 @media screen and (max-width:767px) {
-    .pop-up-2__exit {
+    .pop-up-add-photo__exit {
         width: 6.25vw;
         height: 6.25vw;
         top: -11.25vw;
@@ -23,7 +23,7 @@
 }
 
 @media screen and (min-width:768px) and (max-width:1279px) {
-    .pop-up-2__exit {
+    .pop-up-add-photo__exit {
         width: 2.5vw;
         height: 2.5vw;
         top: -3.125vw;
@@ -32,7 +32,7 @@
 }
 
 @media screen and (min-width:1280px) {
-    .pop-up-2__exit {
+    .pop-up-add-photo__exit {
         width: 32px;
         height: 32px;
         top: -40px;
