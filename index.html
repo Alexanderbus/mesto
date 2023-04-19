@@ -47,16 +47,28 @@
                 <button class="pop-up-2__exit" type="button"></button>
                 <h2 class="pop-up-2__header">Новое место</h2>
                 <form class="form2" name="editor2">
-                    <input class="pop-up-2__input pop-up-2__input_role_name" name="name2" type="text" placeholder="Название">
-                    <input class="pop-up-2__input pop-up-2__input_role_link" name="link" type="link" placeholder="Ссылка на картинку">
+                    <input class="pop-up-2__input pop-up-2__input_role_name" name="name2" type="text"
+                        placeholder="Название">
+                    <input class="pop-up-2__input pop-up-2__input_role_link" name="link" type="link"
+                        placeholder="Ссылка на картинку">
                     <button class="pop-up-2__edit" type="submit">Сохранить</button>
                 </form>
             </div>
         </div>
+        <div class="pop-up-image">
+            <div class="sad">
+                <img class="pop-up-image__closeBtn" src="images/CloseIcon.svg" alt="кнопка закрытия">
+                <img class="pop-up-image__pic"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOfxYeUDCCSjMyxR4gvgDqTVr0nIUxoEhXL-oHPfh3&s">
+                <p class="pop-up-image__title"></p>
+            </div>
+        </div>
+    </div>
     </div>
     <template class="card-template">
         <div class="card">
             <img class="card__photo" alt="фотокарточка" id='link'>
+            <img class="card__trash" alt="Мусорка" id='trash' src="images/Trash.svg">
             <div class="card__info">
                 <h2 class="card__text" id="name"></h2>
                 <button class="card__like" type="button"></button>

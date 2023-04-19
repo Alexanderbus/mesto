@@ -1,0 +1,21 @@
+@media screen and (max-width: 1280px) {
+.card__trash {
+    position: absolute;
+    right: 10vw;
+    top: 4vw;
+    width: 5.625vw;
+    width: 5.9375vw;
+    cursor: pointer;
+}
+}
+
+@media screen and (min-width: 1280px) {
+.card__trash {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 18px;
+    height: 19px;
+    cursor: pointer;
+}
+}
