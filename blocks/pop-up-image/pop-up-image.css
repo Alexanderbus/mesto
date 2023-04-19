@@ -13,3 +13,7 @@
     opacity: 0;
     transition: visibility 0.1s, opacity 0.1s linear;
 }
+
+.pop-up-image:hover {
+    opacity: .6;
+}

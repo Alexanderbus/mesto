@@ -19,3 +19,7 @@
     cursor: pointer;
 }
 }
+
+.card__trash:hover {
+    opacity: .6;
+}

@@ -22,3 +22,8 @@
         top: -40px;
     }
 }
+
+.pop-up-image__closeBtn:hover {
+    opacity: .6;
+}
+
