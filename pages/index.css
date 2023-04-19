@@ -37,9 +37,4 @@
 @import url('../blocks/pop-up-image/__pic/pop-up__pic.css');
 @import url('../blocks/pop-up-image/__title/pop-up__title.css');
 @import url('../blocks/pop-up-image/closeBtn/pop-up-image__closeBtn.css');
-
-.sad {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-}
+@import url('../blocks/pop-up-image/__container/pop-up-image__container.css');

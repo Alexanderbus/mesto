@@ -1,5 +1,6 @@
 .pop-up-image {
-    display: none;
+    display: flex;
+    visibility: hidden;
     position: fixed;
     flex-direction: column;
     top: 0;
@@ -9,4 +10,6 @@
     background-color: rgba(0, 0, 0, .9);
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    transition: visibility 0.1s, opacity 0.1s linear;
 }
