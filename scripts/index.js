@@ -87,7 +87,7 @@ function addNewCard(evt) {
             name: valueName,
             link: valueLink
         }
-        popupAddPhoto.classList.remove('pop-up_opened');
+        closePopup(popupAddPhoto);
         addCard(createCard(NewCard))
     }
     else {
