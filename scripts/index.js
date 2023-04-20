@@ -109,7 +109,7 @@ const closePopupEdit = document.querySelector('.pop-up-edit-profile__exit');
 //открытие поп апа
 editProfileBtn.addEventListener('click', function () {
     openPopup(popupEditProfile);
-    inputNameProfile.setAttribute("placeholder", 'Имя'); // вы мне сами сказали с бьльшой буквы назвать переменную в прошлой итерации(((
+    inputNameProfile.setAttribute("placeholder", 'Имя');
     inputHobbyProfile.setAttribute("placeholder", 'Хобби');
     inputNameProfile.value = nameProfile.textContent;
     inputHobbyProfile.value = hobbyProfile.textContent;
