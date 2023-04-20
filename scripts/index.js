@@ -100,31 +100,31 @@ editorAddPhoto.addEventListener('submit', addNewCard)
 const editProfileBtn = document.querySelector('.profile__button');
 const popupEditProfile = document.querySelector('.pop-up-edit-profile');
 const formPopupProfile = document.EditProfile;
-const InputNameProfile = formPopupProfile.nameEditProfile;
-const InputHobbyProfile = formPopupProfile.aboutEditProfile;
-const HobbyProfile = document.querySelector('.profile__whoau');
+const inputNameProfile = formPopupProfile.nameEditProfile;
+const inputHobbyProfile = formPopupProfile.aboutEditProfile;
+const hobbyProfile = document.querySelector('.profile__whoau');
 const nameProfile = document.querySelector('.profile__name');
 const closePopupEdit = document.querySelector('.pop-up-edit-profile__exit');
 
 //открытие поп апа
 editProfileBtn.addEventListener('click', function () {
     openPopup(popupEditProfile);
-    InputNameProfile.setAttribute("placeholder", 'Имя');
-    InputHobbyProfile.setAttribute("placeholder", 'Хобби');
-    InputNameProfile.value = nameProfile.textContent;
-    InputHobbyProfile.value = HobbyProfile.textContent;
+    inputNameProfile.setAttribute("placeholder", 'Имя'); // вы мне сами сказали с бьльшой буквы назвать переменную в прошлой итерации(((
+    inputHobbyProfile.setAttribute("placeholder", 'Хобби');
+    inputNameProfile.value = nameProfile.textContent;
+    inputHobbyProfile.value = hobbyProfile.textContent;
 })
 
 //функция по редактированию профиля
 function handleFormSubmitProfile(evt) {
     evt.preventDefault();
-    if (InputNameProfile.value.length > 0 && InputHobbyProfile.value.length > 0) {
-        nameProfile.textContent = InputNameProfile.value;
-        HobbyProfile.textContent = InputHobbyProfile.value;
+    if (inputNameProfile.value.length > 0 && inputHobbyProfile.value.length > 0) {
+        nameProfile.textContent = inputNameProfile.value;  
+        hobbyProfile.textContent = inputHobbyProfile.value;
         closePopup(popupEditProfile)
     } else {
-        InputNameProfile.setAttribute("placeholder", 'Введите имя!');
-        InputHobbyProfile.setAttribute("placeholder", 'Введите информацию о себе!');
+        inputNameProfile.setAttribute("placeholder", 'Введите имя!');
+        inputHobbyProfile.setAttribute("placeholder", 'Введите информацию о себе!');
     }
 }
 
