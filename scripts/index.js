@@ -125,7 +125,7 @@ function handleFormSubmitProfile(evt) {
     if (InputNameProfile.value.length > 0 && InputHobbyProfile.value.length > 0) {
         nameProfile.textContent = InputNameProfile.value;
         HobbyProfile.textContent = InputHobbyProfile.value;
-        popupEditProfile.classList.remove('pop-up_opened');
+        closePopup(popupEditProfile)
     } else {
         InputNameProfile.setAttribute("placeholder", 'Введите имя!');
         InputHobbyProfile.setAttribute("placeholder", 'Введите информацию о себе!');
