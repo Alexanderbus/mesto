@@ -5,7 +5,14 @@ const closePopup = (popup) => { popup.classList.remove('popup_opened') };
 
 const cardTemplate = document.querySelector('.card-template');
 const cardsContainer = document.querySelector('.cards')
-
+const popupImage = document.querySelector('.pop-up-image')
+const popUpZoomTitle = document.querySelector('.pop-up-image__title');
+const popUpZoomImage = document.querySelector('.pop-up-image__pic');
+//закрываем зум поп ап
+const buttonCloseZoomImage = popupImage.querySelector('.pop-up-image__closeBtn');
+buttonCloseZoomImage.addEventListener('click', () => {
+    closePopup(popupImage)
+})
 //создаем карту
 const createCard = (cardData) => {
     const cardElement = cardTemplate.content.querySelector('.card').cloneNode(true);
@@ -27,9 +34,6 @@ const createCard = (cardData) => {
     })
 
     //отркрываем зум поп ап
-    const popupImage = document.querySelector('.pop-up-image')
-    const popUpZoomTitle = document.querySelector('.pop-up-image__title');
-    const popUpZoomImage = document.querySelector('.pop-up-image__pic');
     const handlePreviewPicture = (cardData) => {
         popUpZoomTitle.textContent = cardData.name;
         popUpZoomImage.src = cardData.link;
@@ -38,12 +42,6 @@ const createCard = (cardData) => {
 
     cardImage.addEventListener('click', () => {
         handlePreviewPicture(cardData)
-    })
-
-    //закрываем зум поп ап
-    const closeZoomImage = popupImage.querySelector('.pop-up-image__closeBtn');
-    closeZoomImage.addEventListener('click', () => {
-        closePopup(popupImage)
     })
 
     //запускаем
@@ -61,14 +59,13 @@ initialCards.forEach((card) => {
 
 const buttonAddPhoto = document.querySelector('.profile__add-photo');
 const popupAddPhoto = document.querySelector('.pop-up-add-photo')
-const namePhotoPopup = document.querySelector('.pop-up-add-photo__input_role_name')
-const linkPhotoPopup = document.querySelector('.pop-up-add-photo__input_role_link')
+const inputNameFormAddNewCard = document.querySelector('.pop-up-add-photo__input_role_name')
+const inputLinkFormAddNewCard = document.querySelector('.pop-up-add-photo__input_role_link')
 
 //открытие поп апа
 buttonAddPhoto.addEventListener('click', function () {
     openPopup(popupAddPhoto);
-    namePhotoPopup.value = '';
-    linkPhotoPopup.value = '';
+    editorAddPhoto.reset();
 })
 
 const closePopupAddPhoto = document.querySelector('.pop-up-add-photo__exit')
@@ -80,21 +77,20 @@ closePopupAddPhoto.addEventListener('click', function () {
 
 function addNewCard(evt) {
     evt.preventDefault();
-    if (linkPhotoPopup.value.startsWith('http') == 1) {
-        const valueName = namePhotoPopup.value;
-        const valueLink = linkPhotoPopup.value;
-        const NewCard = {
+    if (inputLinkFormAddNewCard.value.startsWith('http') == 1) {
+        const valueName = inputNameFormAddNewCard.value;
+        const valueLink = inputLinkFormAddNewCard.value;
+        const newCard = {
             name: valueName,
             link: valueLink
         }
         closePopup(popupAddPhoto);
-        addCard(createCard(NewCard))
+        addCard(createCard(newCard))
     }
     else {
-        namePhotoPopup.setAttribute("placeholder", 'Введите имя!');
-        linkPhotoPopup.setAttribute("placeholder", 'ССЫЛКУ ВВЕДИ!');
-        namePhotoPopup.value = '';
-        linkPhotoPopup.value = '';
+        inputNameFormAddNewCard.setAttribute("placeholder", 'Введите имя!');
+        inputLinkFormAddNewCard.setAttribute("placeholder", 'ССЫЛКУ ВВЕДИ!');
+        editorAddPhoto.reset();
     }
 }
 
@@ -103,9 +99,9 @@ editorAddPhoto.addEventListener('submit', addNewCard)
 // попап редактирования профиля
 const editProfileBtn = document.querySelector('.profile__button');
 const popupEditProfile = document.querySelector('.pop-up-edit-profile');
-const popupEditProfileEditor = document.EditProfile;
-const InputNameProfile = popupEditProfileEditor.nameEditProfile;
-const InputHobbyProfile = popupEditProfileEditor.aboutEditProfile;
+const formPopupProfile = document.EditProfile;
+const InputNameProfile = formPopupProfile.nameEditProfile;
+const InputHobbyProfile = formPopupProfile.aboutEditProfile;
 const HobbyProfile = document.querySelector('.profile__whoau');
 const nameProfile = document.querySelector('.profile__name');
 const closePopupEdit = document.querySelector('.pop-up-edit-profile__exit');
@@ -133,7 +129,7 @@ function handleFormSubmitProfile(evt) {
 }
 
 //запускаем функцию
-popupEditProfileEditor.addEventListener('submit', handleFormSubmitProfile);
+formPopupProfile.addEventListener('submit', handleFormSubmitProfile);
 
 //кнопка закрыть попап
 closePopupEdit.addEventListener('click', function () {
