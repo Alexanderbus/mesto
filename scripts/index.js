@@ -61,11 +61,18 @@ const buttonAddPhoto = document.querySelector('.profile__add-photo');
 const popupAddPhoto = document.querySelector('.pop-up-add-photo')
 const inputNameFormAddNewCard = document.querySelector('.pop-up-add-photo__input_role_name')
 const inputLinkFormAddNewCard = document.querySelector('.pop-up-add-photo__input_role_link')
+const errorTextAddPhoto = document.querySelectorAll('.pop-up-add-photo__error')
+const errorTextAddPhotoArray = Array.from(errorTextAddPhoto)
 
 //открытие поп апа
 buttonAddPhoto.addEventListener('click', function () {
     openPopup(popupAddPhoto);
     editorAddPhoto.reset();
+    inputNameFormAddNewCard.classList.remove('popup__input_invalid')
+    inputLinkFormAddNewCard.classList.remove('popup__input_invalid')
+    errorTextAddPhotoArray.forEach((errorTextAddPhotoArray) => {
+        errorTextAddPhotoArray.textContent = '';
+        })
 })
 
 const closePopupAddPhoto = document.querySelector('.pop-up-add-photo__exit')
@@ -105,14 +112,20 @@ const inputHobbyProfile = formPopupProfile.aboutEditProfile;
 const hobbyProfile = document.querySelector('.profile__whoau');
 const nameProfile = document.querySelector('.profile__name');
 const closePopupEdit = document.querySelector('.pop-up-edit-profile__exit');
+const errorTextEditProfile = document.querySelectorAll('.pop-up-edit-profile__error')
+const errorTextEditProfilerray = Array.from(errorTextEditProfile)
 
 //открытие поп апа
 editProfileBtn.addEventListener('click', function () {
     openPopup(popupEditProfile);
     inputNameProfile.setAttribute("placeholder", 'Имя');
     inputHobbyProfile.setAttribute("placeholder", 'Хобби');
-    inputNameProfile.value = nameProfile.textContent;
-    inputHobbyProfile.value = hobbyProfile.textContent;
+    EditProfile.reset()
+    inputNameProfile.classList.remove('popup__input_invalid')
+    inputHobbyProfile.classList.remove('popup__input_invalid')
+    errorTextEditProfilerray.forEach((errorTextEditProfilerray) => {
+        errorTextEditProfilerray.textContent = '';
+        })
 })
 
 //функция по редактированию профиля
