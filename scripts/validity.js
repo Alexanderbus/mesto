@@ -24,7 +24,7 @@ function checkInputValidity(input, popup) {
 }
 
 function toggleButtonValidity(popup) {
-    const submitButton = popup.querySelector('#submitButton')
+    const submitButton = popup.querySelector('.submitButton')
     if (!popup.checkValidity()) {
         submitButton.setAttribute('disabled', '')
         submitButton.classList.add('button_invalid')
