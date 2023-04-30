@@ -129,6 +129,7 @@ function handleFormSubmitProfile(evt) {
 }
 
 //запускаем функцию
+//запускаем функцию
 formPopupProfile.addEventListener('submit', handleFormSubmitProfile);
 
 //кнопка закрыть попап
