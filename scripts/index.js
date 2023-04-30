@@ -3,6 +3,7 @@ const openPopup = (popup) => { popup.classList.add('popup_opened') };
 //создаем функцию для закрытия поп-апа
 const closePopup = (popup) => { popup.classList.remove('popup_opened') };
 
+const body = document.querySelector('.body');
 const cardTemplate = document.querySelector('.card-template');
 const cardsContainer = document.querySelector('.cards')
 const popupImage = document.querySelector('.pop-up-image')
@@ -48,6 +49,7 @@ const createCard = (cardData) => {
     return cardElement;
 }
 
+
 const addCard = (cardElement) => {
     cardsContainer.prepend(cardElement);
 }
@@ -81,6 +83,9 @@ closePopupAddPhoto.addEventListener('click', function () {
     closePopup(popupAddPhoto);
 })
 
+closePopupAddPhoto.addEventListener('', function () {
+    closePopup(popupAddPhoto);
+})
 
 function addNewCard(evt) {
     evt.preventDefault();
@@ -140,6 +145,14 @@ function handleFormSubmitProfile(evt) {
         inputHobbyProfile.setAttribute("placeholder", 'Введите информацию о себе!');
     }
 }
+
+body.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Escape') {
+        closePopup(popupAddPhoto);
+        closePopup(popupEditProfile);
+        closePopup(popupImage)
+    }
+  }); 
 
 //запускаем функцию
 //запускаем функцию
