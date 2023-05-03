@@ -1,4 +1,4 @@
-.pop-up-edit-profile__save {
+.popup__submit-button {
     background-color: rgba(0, 0, 0);
     padding: 0;
     font-weight: 400;
@@ -10,12 +10,12 @@
     border: none;
 }
 
-.pop-up-edit-profile__save:hover {
+.popup__submit-button:hover {
     background-color: rgba(0, 0, 0, .8);
 }
 
 @media screen and (max-width:767px) {
-    .pop-up-edit-profile__save {
+    .popup__submit-button {
         width: 74.375vw;
         min-height: 14.375vw;
         margin-top: 14.0624vw;
@@ -27,7 +27,7 @@
 }
 
 @media screen and (min-width: 768px) and (max-width:1279px) {
-    .pop-up-edit-profile__save {
+    .popup__submit-button {
         width: 27.98vw;
         min-height: 3.906vw;
         margin-top: 3.75vw;
@@ -39,7 +39,7 @@
 }
 
 @media screen and (min-width:1280px) {
-    .pop-up-edit-profile__save {
+    .popup__submit-button {
         width: 358px;
         min-height: 50px;
         margin-top: 48px;

@@ -1,4 +1,4 @@
-.pop-up-add-photo__error {
+.popup__error {
     margin-top: 5px;
     font-size: 12px;
     font-weight: 400;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width:767px) {
-    .pop-up-add-photo__error {
+    .popup__error {
         margin-left: 6.875vw;
         margin-right: 6.875vw;
         width: 74.375vw;
@@ -16,14 +16,14 @@
 }
 
 @media screen and (min-width: 768px) and (max-width:1279px) {
-    .pop-up-add-photo__error {
+    .popup__error {
         margin-left: 2.8125vw;
         margin-right: 6.875vw;
     }
 }
 
 @media screen and (min-width:1280px) {
-    .pop-up-add-photo__error {
+    .popup__error {
         margin-left: 36px;
         margin-right: 6.875vw;
     }

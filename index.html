@@ -9,7 +9,7 @@
     <title>Место</title>
     <script src="scripts/cards.js" defer></script>
     <script src="scripts/index.js" defer></script>
-    <script src="scripts/validity.js" defer></script>
+    <script src="scripts/validation.js" defer></script>
 </head>
 
 <body class="body">
@@ -33,34 +33,35 @@
         <footer class="footer">
             <p class="footer__copyright">© 2023 Mesto Russia</p>
         </footer>
-        <div class="pop-up-edit-profile popup">
-            <div class="pop-up-edit-profile__container">
-                <button class="pop-up-edit-profile__exit" type="button"></button>
-                <h2 class="pop-up-edit-profile__header">Редактировать профиль</h2>
-                <form class="form-edit-profile" name="EditProfile" novalidate>
-                    <input class="pop-up-edit-profile__input pop-up-edit-profile__input_role_name" autocomplete="off"
-                        name="nameEditProfile" id="nameEditProfile" type="text" required minlength="2" maxlength="40">
-                    <div class="pop-up-edit-profile__error nameEditProfileError"></div>
-                    <input class="pop-up-edit-profile__input pop-up-edit-profile__input_role_about" autocomplete="off"
-                        name="aboutEditProfile" id="aboutEditProfile" type="text" required minlength="2"
-                        maxlength="200">
-                    <div class="pop-up-edit-profile__error aboutEditProfileError"></div>
-                    <button class="pop-up-edit-profile__save submitButton" type="submit">Сохранить</button>
+        <div class="popup popup_edit-profile">
+            <div class="popup__container">
+                <button class="popup__exit popup__exit_editProfile" type="button"></button>
+                <h2 class="popup__header">Редактировать профиль</h2>
+                <form class="popup__form popup__form_edit-profile" name="EditProfile" novalidate>
+                    <input class="popup__input" autocomplete="off" name="nameEditProfile" placeholder="Имя"
+                        id="nameEditProfile" type="text" required minlength="2" maxlength="40">
+                    <div class="popup__error popup__edit-profile_error_name" id="nameEditProfileError"></div>
+                    <input class="popup__input" autocomplete="off" name="aboutEditProfile" placeholder="Хобби"
+                        id="aboutEditProfile" type="text" required minlength="2" maxlength="200">
+                    <div class="popup__error popup__edit-profile_error_about" id="aboutEditProfileError"></div>
+                    <button class="popup__submit-button popup__submit-button_edit-profile"
+                        type="submit">Сохранить</button>
                 </form>
             </div>
         </div>
-        <div class="pop-up-add-photo popup">
-            <div class="pop-up-add-photo__container">
-                <button class="pop-up-add-photo__exit" type="button"></button>
-                <h2 class="pop-up-add-photo__header">Новое место</h2>
-                <form class="form-add-photo" name="editorAddPhoto" novalidate>
-                    <input class="pop-up-add-photo__input pop-up-add-photo__input_role_name" name="name-add-photo"
-                        type="text" placeholder="Название" autocomplete="off" id="addPhotoName" required minlength="2" maxlength="30">
-                        <div class="pop-up-add-photo__error addPhotoNameError"></div>
-                    <input class="pop-up-add-photo__input pop-up-add-photo__input_role_link" name="link-add-photo"
-                        type="url" placeholder="Ссылка на картинку" autocomplete="off" id="addPhotoUrl" required>
-                        <div class="pop-up-add-photo__error addPhotoUrlError"></div>
-                    <button class="pop-up-add-photo__edit submitButton" type="submit">Сохранить</button>
+        <div class="popup popup_add-photo">
+            <div class="popup__container">
+                <button class="popup__exit popup__exit_add-photo" type="button"></button>
+                <h2 class="popup__header">Новое место</h2>
+                <form class="popup__form popup__form_add-photo" novalidate>
+                    <input id="namePhoto" class="popup__input popup__input_NameCard" name="name-add-photo"
+                        type="text" placeholder="Название" autocomplete="off" id="addPhotoName" required minlength="2"
+                        maxlength="30">
+                    <div id="namePhotoError" class="popup__error popup__add-photo_error_nameCard"></div>
+                    <input id="urlPhoto" class="popup__input popup__input_UrlCard" name="link-add-photo" type="url"
+                        placeholder="Ссылка на картинку" autocomplete="off" id="addPhotoUrl" required>
+                    <div id="urlPhotoError" class="popup__error popup__add-photo_error_UrlCard"></div>
+                    <button class="popup__submit-button popup__submit-button_add-photo" type="submit">Сохранить</button>
                 </form>
             </div>
         </div>
