@@ -9,7 +9,7 @@ function closePopupByEsc(evt) {
 const openPopup = (popup) => {
     popup.classList.add('popup_opened')
     // закрытие искейпа попапов
-    document.addEventListener('keydown', (evt) => {closePopupByEsc(evt) })
+    document.addEventListener('keydown', closePopupByEsc)
 }
 //создаем функцию для закрытия поп-апа
 const closePopup = (popup) => { 
