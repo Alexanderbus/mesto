@@ -7,9 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pages/index.css">
     <title>Место</title>
-    <script src="scripts/cards.js" defer></script>
-    <script src="scripts/index.js" defer></script>
-    <script src="scripts/validation.js" defer></script>
+    <script type="module" src="scripts/index.js" defer></script>
+    <script type="module" src="scripts/validation.js" defer></script>
+    <script type="module" src="scripts/card.js" defer></script>
+    <script type="module" src="scripts/initalCards.js" defer></script>
 </head>
 
 <body class="body">
@@ -27,7 +28,7 @@
                 </div>
                 <button class="profile__add-photo" type="button"></button>
             </section>
-            <section class="cards">
+            <section class="cards" id="cards">
             </section>
         </main>
         <footer class="footer">
@@ -73,7 +74,7 @@
             </div>
         </div>
     </div>
-    <template class="card-template">
+    <template class="card-template" id="card-template">
         <div class="card">
             <img class="card__photo" alt="фотокарточка" id='link'>
             <img class="card__trash" alt="Мусорка" id='trash' src="images/Trash.svg">
