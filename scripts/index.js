@@ -32,7 +32,7 @@ const cardTemplate = document.querySelector('.card-template')
 
 import { Card } from './Сard.js';
 import { initialCards } from './initalCards.js'
-import { FormValidator } from './validation.js'
+import { FormValidator } from './Validation.js'
 
 const formAddPhoto = new FormValidator({errorClass: 'popup__input_invalid', disableButton: 'popup__submit-button_disabled', 
 submitButton: submitButtonAddphoto, input: '.popup__input', inputsArray: inputsArrayAddPhoto}, popupFormAddPhoto)
