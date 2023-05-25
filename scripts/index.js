@@ -18,10 +18,16 @@ const nameProfile = document.querySelector('.profile__name');
 const closePopupEditProfile = document.querySelector('.popup__exit_editProfile');
 const closePopupAddPhoto = document.querySelector('.popup__exit_add-photo');
 const submitButtonAddphoto = document.querySelector('.popup__submit-button_add-photo')
+const submitButtonAEditProfile = document.querySelector('.popup__submit-button_edit-profile')
 
 const popups = document.querySelectorAll('.popup')
 const popupsArray = Array.from(popups)
 const popupFormAddPhoto = document.querySelector('.popup__form_add-photo')
+const inputsAddphoto = popupFormAddPhoto.querySelectorAll('.popup__input')
+const inputsArrayAddPhoto = Array.from(inputsAddphoto)
+const popupFormEditProfile = document.querySelector('.popup__form_edit-profile')
+const inputsEditProfile = popupFormEditProfile.querySelectorAll('.popup__input')
+const inputsArrayEditProfile = Array.from(inputsEditProfile)
 const cardTemplate = document.querySelector('.card-template')
 
 import { Card } from './Сard.js';
@@ -29,9 +35,9 @@ import { initialCards } from './initalCards.js'
 import { FormValidator } from './validation.js'
 
 const formAddPhoto = new FormValidator({errorClass: 'popup__input_invalid', disableButton: 'popup__submit-button_disabled', 
-submitButton: '.popup__submit-button', input: '.popup__input'}, document.querySelector('.popup__form_add-photo'))
+submitButton: submitButtonAddphoto, input: '.popup__input', inputsArray: inputsArrayAddPhoto}, popupFormAddPhoto)
 const formEditProfile = new FormValidator({errorClass: 'popup__input_invalid', disableButton: 'popup__submit-button_disabled', 
-submitButton: '.popup__submit-button', input: '.popup__input'}, document.querySelector('.popup__form_edit-profile'))
+submitButton: submitButtonAEditProfile, input: '.popup__input', inputsArray: inputsArrayEditProfile}, popupFormEditProfile )
 
 function closePopupByEsc(evt) {
     if (evt.key === 'Escape') {
@@ -60,11 +66,10 @@ buttonCloseZoomImage.addEventListener('click', () => {
 buttonAddPhoto.addEventListener('click', function () {
     popupFormAddPhoto.reset();
     openPopup(popupAddPhoto);
-    inputNameFormAddNewCard.classList.remove('popup__input_invalid');
-    inputLinkFormAddNewCard.classList.remove('popup__input_invalid')
     formAddPhoto.disableButton(submitButtonAddphoto);
     errorTextArray.forEach((errorTextEditProfileArray) => { // сколько не пытался я не понимаю как сюда применить _setInputValidState
         formAddPhoto.setInputValidState(inputNameFormAddNewCard, errorTextEditProfileArray)
+        formAddPhoto.setInputValidState(inputLinkFormAddNewCard, errorTextEditProfileArray)
     })
 })
 
@@ -72,12 +77,11 @@ buttonAddPhoto.addEventListener('click', function () {
 editProfileBtn.addEventListener('click', function () {
     openPopup(popupEditProfile)
     formPopupProfile.reset()
-    inputNameProfile.classList.remove('popup__input_invalid')
-    inputHobbyProfile.classList.remove('popup__input_invalid')
     inputNameProfile.value = nameProfile.textContent;
     inputHobbyProfile.value = hobbyProfile.textContent;
     errorTextArray.forEach((errorTextEditProfileArray) => { // сколько не пытался я не понимаю как сюда применить _setInputValidState
         formAddPhoto.setInputValidState(inputNameProfile, errorTextEditProfileArray)
+        formAddPhoto.setInputValidState(inputHobbyProfile, errorTextEditProfileArray)
     })
 })
 
