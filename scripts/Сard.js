@@ -6,18 +6,15 @@ export class Card {
     _popUpZoomImage = document.querySelector('.pop-up-image__pic');
 
 
-    constructor(title, image) {
+    constructor(title, image, template) {
         this._title = title;
         this._image = image;
+        this._template = template;
     }
 
     // получаем структуру карточки
     _getTemplate() {
-        const cardElement = document
-            .querySelector('.card-template')
-            .content
-            .querySelector('.card')
-            .cloneNode(true);
+        const cardElement = this._template.content.querySelector('.card').cloneNode(true);
 
         return cardElement;
     }

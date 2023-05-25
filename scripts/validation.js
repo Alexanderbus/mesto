@@ -1,51 +1,55 @@
 export class FormValidator {
 
-    constructor(formSelector) {
+    constructor(config, formSelector) {
+        this._errorClass = config.errorClass;  // popup__input_invalid 
+        this._disableButton = config.disableButton; // popup__submit-button_disabled
+        this._submitButton = config.submitButton // popup__submit-button
+        this._input = config.input; // popup__input
+
         this._formSelector = formSelector;
     }
 
-    _setInputValidState(input, errorElement) {
-        input.classList.remove('popup__input_invalid')
+    setInputValidState(input, errorElement) {
+        input.classList.remove(this._errorClass)
         errorElement.textContent = ''
     }
 
     _setInputInvalidState(input, errorElement) {
-        input.classList.add('popup__input_invalid')
+        input.classList.add(this._errorClass)
         errorElement.textContent = input.validationMessage
     }
 
     _checkInputValidity(input) {
         const errorElement = this._formSelector.querySelector(`#${input.id}Error`)
         if (input.checkValidity()) {
-            this._setInputValidState(input, errorElement)
+            this.setInputValidState(input, errorElement)
         }
         else {
             this._setInputInvalidState(input, errorElement)
         }
     }
 
-    _disableButton(SubmitButton) {
+    disableButton(SubmitButton) {
         SubmitButton.setAttribute('disabled', '')
-        SubmitButton.classList.add('popup__submit-button_disabled');
+        SubmitButton.classList.add(this._disableButton);
     }
 
     _enableButton(SubmitButton) {
         SubmitButton.removeAttribute('disabled')
-        SubmitButton.classList.remove('popup__submit-button_disabled');
+        SubmitButton.classList.remove(this._disableButton);
     }
 
-
     _toggleButtonValidity() {
-        const SubmitButton = this._formSelector.querySelector('.popup__submit-button')
+        const SubmitButton = this._formSelector.querySelector(this._submitButton)
         if (this._formSelector.checkValidity())
             this._enableButton(SubmitButton)
         else {
-            this._disableButton(SubmitButton)
+            this.disableButton(SubmitButton)
         }
     }
 
     enableValidation() {
-        const inputs = this._formSelector.querySelectorAll('.popup__input')
+        const inputs = this._formSelector.querySelectorAll(this._input)
         const inputsArray = Array.from(inputs)
         inputsArray.forEach((input) => {
             input.addEventListener('input', () => {
@@ -55,3 +59,8 @@ export class FormValidator {
         })
     }
 }
+
+//const formAddPhoto = new FormValidator(document.querySelector('.popup__form_edit-profile'))
+//const formEditProfile = new FormValidator(document.querySelector('.popup__form_add-photo'))
+
+//launchValidation(formEditProfile)
