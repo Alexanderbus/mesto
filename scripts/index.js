@@ -135,9 +135,6 @@ function addNewCard(evt) {
 // вешаем слушатель на сабмит добавления карточки
 popupFormAddPhoto.addEventListener('submit', addNewCard)
 
-
-
-
 function launchValidation(form) {
     form.enableValidation()
 }
