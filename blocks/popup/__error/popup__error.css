@@ -5,6 +5,7 @@
     line-height: 15px;
     text-align: left;
     color: #FF0000;
+    min-height: 30px;
 }
 
 @media screen and (max-width:767px) {
