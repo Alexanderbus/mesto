@@ -62,15 +62,12 @@ buttonCloseZoomImage.addEventListener('click', () => {
     closePopup(popupImage)
 })
 
-//открытие поп апа добавления фото
+//открытие поп-апа добавления фото
 buttonAddPhoto.addEventListener('click', function () {
     popupFormAddPhoto.reset();
     openPopup(popupAddPhoto);
     formAddPhoto.disableButton(submitButtonAddphoto);
-    errorTextArray.forEach((errorTextEditProfileArray) => { // сколько не пытался я не понимаю как сюда применить _setInputValidState
-        formAddPhoto.setInputValidState(inputNameFormAddNewCard, errorTextEditProfileArray)
-        formAddPhoto.setInputValidState(inputLinkFormAddNewCard, errorTextEditProfileArray)
-    })
+    formAddPhoto.resetError()
 })
 
 //открытие поп апа
@@ -79,10 +76,7 @@ editProfileBtn.addEventListener('click', function () {
     formPopupProfile.reset()
     inputNameProfile.value = nameProfile.textContent;
     inputHobbyProfile.value = hobbyProfile.textContent;
-    errorTextArray.forEach((errorTextEditProfileArray) => { // сколько не пытался я не понимаю как сюда применить _setInputValidState
-        formAddPhoto.setInputValidState(inputNameProfile, errorTextEditProfileArray)
-        formAddPhoto.setInputValidState(inputHobbyProfile, errorTextEditProfileArray)
-    })
+    formEditProfile.resetError()
 })
 
 //функция по редактированию профиля

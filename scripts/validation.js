@@ -20,6 +20,13 @@ export class FormValidator {
         errorElement.textContent = input.validationMessage
     }
 
+    resetError() {
+        this._inputsArray.forEach(input => {
+            const errorElement = this._formSelector.querySelector(`#${input.id}Error`)
+            this.setInputValidState(input, errorElement)
+        })
+     } 
+
     _checkInputValidity(input) {
         const errorElement = this._formSelector.querySelector(`#${input.id}Error`)
         if (input.checkValidity()) {
