@@ -1,5 +1,4 @@
 export class FormValidator {
-
     constructor(config, formSelector) {
         this._errorClass = config.errorClass;  // popup__input_invalid 
         this._disableButton = config.disableButton; // popup__submit-button_disabled
@@ -65,8 +64,3 @@ export class FormValidator {
         })
     }
 }
-
-//const formAddPhoto = new FormValidator(document.querySelector('.popup__form_edit-profile'))
-//const formEditProfile = new FormValidator(document.querySelector('.popup__form_add-photo'))
-
-//launchValidation(formEditProfile)
