@@ -1,3 +1,4 @@
+import './index.css';
 const popupImage = document.querySelector('.pop-up-image')
 const buttonAddPhoto = document.querySelector('.profile__add-photo');
 const popupAddPhoto = document.querySelector('.popup_add-photo')
