@@ -1,15 +1,9 @@
-import {openPopup} from './index.js'
-
 export class Card {
-    _popupImage = document.querySelector('.pop-up-image')
-    _popUpZoomTitle = document.querySelector('.pop-up-image__title');
-    _popUpZoomImage = document.querySelector('.pop-up-image__pic');
-
-
-    constructor(title, image, template) {
+    constructor({ title, image, handleCardClick }, template) {
         this._title = title;
         this._image = image;
         this._template = template;
+        this._handleCardClick = handleCardClick;
     }
 
     // получаем структуру карточки
@@ -17,12 +11,6 @@ export class Card {
         const cardElement = this._template.content.querySelector('.card').cloneNode(true);
 
         return cardElement;
-    }
-
-    _popupZoom() {
-        this._popUpZoomTitle.textContent = this._title;
-        this._popUpZoomImage.src = this._image;
-        openPopup(this._popupImage);
     }
 
     _likeButton() {
@@ -41,8 +29,9 @@ export class Card {
             this._deleteButton();
         });
         this._element.querySelector('.card__photo').addEventListener('click', () => {
-            this._popupZoom();
-        });
+            this._handleCardClick()
+        }
+        );
     }
 
     generateCard() {

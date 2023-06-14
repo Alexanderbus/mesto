@@ -5,15 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="pages/index.css">
     <title>Место</title>
-    <script type="module" src="scripts/index.js" defer></script>
 </head>
 
 <body class="body">
     <div class="page">
         <header class="header">
-            <img class="logo" src="images/logo.svg" alt="лого">
+            <img class="logo" src="<%=require('./images/logo.svg')%>" alt="лого">
         </header>
         <main class="content">
             <section class="profile">
@@ -65,8 +63,8 @@
         </div>
         <div class="pop-up-image popup">
             <div class="pop-up-image__container">
-                <img class="pop-up-image__closeBtn" src="images/CloseIcon.svg" alt="кнопка закрытия">
-                <img class="pop-up-image__pic" alt="картинка карточки">
+                <img class="popup__exit pop-up-image__closeBtn" src="<%=require('./images/CloseIcon.svg')%>" alt="кнопка закрытия">
+                <img class="pop-up-image__pic" alt="">
                 <p class="pop-up-image__title"></p>
             </div>
         </div>
@@ -74,7 +72,7 @@
     <template class="card-template" id="card-template">
         <div class="card">
             <img class="card__photo" alt="фотокарточка" id='link'>
-            <img class="card__trash" alt="Мусорка" id='trash' src="images/Trash.svg">
+            <img class="card__trash" alt="Мусорка" id='trash' src="<%=require('./images/Trash.svg')%>">
             <div class="card__info">
                 <h2 class="card__text" id="name"></h2>
                 <button class="card__like" type="button"></button>
