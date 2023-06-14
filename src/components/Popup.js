@@ -7,7 +7,6 @@ export class Popup {
         open(){
             this._popup.classList.add('popup_opened')
             document.addEventListener('keydown', this._handleEscClose)
-            console.log('охуеть')
         }
 
         close() {
@@ -18,7 +17,6 @@ export class Popup {
         _handleEscClose(event) {
             if (event.key === 'Escape') {
               this.close();
-              console.log('охуеть-опупеть')
             }
         }
 
@@ -26,7 +24,6 @@ export class Popup {
             this._popup.addEventListener('click', (event) => {
               if (event.target.classList.contains('popup') || event.target.classList.contains('popup__exit')) {
                 this.close();
-                console.log('охуеть-опупеть-гремучий лес')
               }
             });
           } 
