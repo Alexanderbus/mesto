@@ -14,7 +14,7 @@ export class Card {
     }
 
     _likeButton() {
-        this._element.querySelector('.card__like').classList.toggle('card__like_active');
+        this._cardLike.classList.toggle('card__like_active');
     }
 
     _deleteButton() {
@@ -22,7 +22,8 @@ export class Card {
     }
 
     _setEventListeners() {
-        this._element.querySelector('.card__like').addEventListener('click', () => {
+        this._cardLike = this._element.querySelector('.card__like')
+        this._cardLike.addEventListener('click', () => {
             this._likeButton();
         });
         this._element.querySelector('.card__trash').addEventListener('click', () => {
@@ -39,6 +40,8 @@ export class Card {
         this._setEventListeners();
         this._element.querySelector('.card__photo').src = this._image;
         this._element.querySelector('.card__text').textContent = this._title;
+        this._element.querySelector('.card__photo').alt = this._title;
+        
 
         return this._element;
     }

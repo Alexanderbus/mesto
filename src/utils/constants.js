@@ -1,6 +1,6 @@
 export const initialCards = [
     {
-        title: 'капибара',
+        title: '1 капибара',
         image: 'https://animals.pibig.info/uploads/posts/2023-04/thumbs/1680614581_animals-pibig-info-p-grizun-kapibara-zhivotnie-pinterest-1.jpg'
     },
     {
