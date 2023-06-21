@@ -54,7 +54,7 @@ defaultCards.renderItems()
 //добавление юзером карточки
 function addNewCard(evt) {
     const data = popupFormPhoto._getInputValues();
-    cards.prepend(createCard({ title: data.nameAddPhoto, image: data.linkAddPhoto}));
+    defaultCards.addItem(createCard({ title: data.nameAddPhoto, image: data.linkAddPhoto}));
 }
 
 // Валидация

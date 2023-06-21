@@ -5,12 +5,12 @@ export class PopupWithForm extends Popup {
       super(popup);
       this._handleSubmit = handleSubmit;
       this._popupForm = this._popup.querySelector('.popup__form')
+      this._inputList = this._popup.querySelectorAll('.popup__input') // я передалал инпут, но вы же сказали просто что нужно в this добавлять эелменты которые используются несколько раз,  а этот элемент используется только один раз
     }
   
     _getInputValues() {
-      const inputList = Array.from(this._popup.querySelectorAll('.popup__input'));
       const formValues = {};
-      inputList.forEach(input => {
+      this._inputList.forEach(input => {
         formValues[input.name] = input.value;
       });
       return formValues;
