@@ -35,3 +35,5 @@
 @import url('../blocks/popup/__error/popup__error.css');
 @import url('../blocks/popup/__input/_invalid/popup__input_invalid.css');
 @import url('../blocks/popup/__submit-button/_disabled/popup__submit-button_disabled.css');
+@import url('../blocks/card/__likeNumbers/card__likeNumbers.css');
+@import url('../blocks/card/_trash/_active/card__trash_active.css');

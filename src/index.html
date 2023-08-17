@@ -6,20 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Место</title>
+    <link rel="stylesheet" href="pages/index.css">
+    <script type="module" src="pages/index.js" defer></script>
 </head>
 
 <body class="body">
     <div class="page">
         <header class="header">
-            <img class="logo" src="<%=require('./images/logo.svg')%>" alt="лого">
+            <img class="logo" src="./images/logo.svg" alt="лого">
         </header>
         <main class="content">
             <section class="profile">
                 <div class="avatar"></div>
                 <div class="profile__info">
-                    <h1 class="profile__name">Александр</h1>
+                    <h1 class="profile__name"></h1>
                     <button class="profile__button" type="button"></button>
-                    <p class="profile__whoau">Любитель Капибар</p>
+                    <p class="profile__whoau"></p>
                 </div>
                 <button class="profile__add-photo" type="button"></button>
             </section>
@@ -63,19 +65,29 @@
         </div>
         <div class="pop-up-image popup">
             <div class="pop-up-image__container">
-                <img class="popup__exit pop-up-image__closeBtn" src="<%=require('./images/CloseIcon.svg')%>" alt="кнопка закрытия">
+                <img class="popup__exit pop-up-image__closeBtn" src='./images/CloseIcon.svg')%>" alt="кнопка закрытия">
                 <img class="pop-up-image__pic" alt="">
                 <p class="pop-up-image__title"></p>
+            </div>
+        </div>
+        <div class="popup popup_delete-card">
+            <div class="popup__container">
+            <button class="popup__exit popup__exit_delete-card" type="button"></button>
+            <h2 class="popup__header">Вы уверены?</h2>
+            <button class="popup__submit-button popup__submit-button_delete-card" type="submit">Да</button>
             </div>
         </div>
     </div>
     <template class="card-template" id="card-template">
         <div class="card">
             <img class="card__photo" alt="фотокарточка" id='link'>
-            <img class="card__trash" alt="Мусорка" id='trash' src="<%=require('./images/Trash.svg')%>">
+            <img class="card__trash" alt="Мусорка" id='trash' src="./images/Trash.svg">
             <div class="card__info">
                 <h2 class="card__text" id="name"></h2>
-                <button class="card__like" type="button"></button>
+                <div class="card__likes">
+                    <button class="card__like" type="button"></button>
+                    <div class="card__likeNumbers"></div>
+                </div>
             </div>
         </div>
     </template>
