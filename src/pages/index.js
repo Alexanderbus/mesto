@@ -25,7 +25,7 @@ const cardTemplate = document.querySelector('.card-template')
 const avatar = document.querySelector('.avatar')
 const deleteButton = document.querySelector('.popup__submit-button_delete-card')
 const avatarIcon = document.querySelector('.avatar')
-const avatarPen = document.querySelector('.avatar__pen')
+const avatarPen = document.querySelector('.pencil')
 const popupAvatar = document.querySelector('.popup_avatar')
 const formPopupAvatar = document.querySelector('.popup__form_avatar')
 const inputUrlAvatar = formPopupAvatar.avatarURL
@@ -196,11 +196,11 @@ avatarIcon.addEventListener('click', () => {
 })
 
 avatarIcon.addEventListener('mouseover', () => {
-    avatarPen.classList.add('avatar__pen_active')
+    avatarPen.classList.add('pencil_active')
 })
 
 avatarIcon.addEventListener('mouseout', () => {
-    avatarPen.classList.remove('avatar__pen_active')
+    avatarPen.classList.remove('pencil_active')
 })
 
 
