@@ -1,4 +1,4 @@
-// вебпаком упакую все на крайней итерации
+// вебпаком упакую все на крайней итерацииb
 
 // import './index.css';
 const popupImage = document.querySelector('.pop-up-image')
