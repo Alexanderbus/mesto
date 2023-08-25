@@ -1,8 +1,13 @@
 .avatar {
     border-radius: 50%;
-    background-image: url('../../images/avatar.jpg');
     background-size: cover;
 }
+   
+   .avatar:hover {
+       opacity: .6;
+       cursor: pointer;
+       transition: .6s;
+   }
 
 @media screen and (max-width: 767px) {
     .avatar {

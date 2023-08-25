@@ -10,7 +10,6 @@ export class UserInfo {
             aboutMe: this._aboutMe.textContent
         }
     }
-
     
   setUserInfo(nameInput, aboutMeInput) {
     this._name.textContent = nameInput;

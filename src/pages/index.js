@@ -1,12 +1,10 @@
-// я понимаю что здесь много что недоделано, но у меня уже мозг взрыввается, провертье хотя бы эту работу что бы я мог исправить эти ошибки
+// вебпаком упакую все на крайней итерации
 
 // import './index.css';
 const popupImage = document.querySelector('.pop-up-image')
 const popupConfirmDeleteCatd = document.querySelector('.popup_delete-card')
 const buttonAddPhoto = document.querySelector('.profile__add-photo');
 const popupAddPhoto = document.querySelector('.popup_add-photo')
-const inputNameFormAddNewCard = document.querySelector('.popup__input_NameCard')
-const inputLinkFormAddNewCard = document.querySelector('.popup__input_UrlCard')
 const cards = document.querySelector('.cards')
 const editProfileBtn = document.querySelector('.profile__button');
 const popupEditProfile = document.querySelector('.popup_edit-profile');
@@ -16,7 +14,7 @@ const inputHobbyProfile = formPopupProfile.aboutEditProfile;
 const hobbyProfile = document.querySelector('.profile__whoau');
 const nameProfile = document.querySelector('.profile__name');
 const submitButtonAddphoto = document.querySelector('.popup__submit-button_add-photo')
-const submitButtonAEditProfile = document.querySelector('.popup__submit-button_edit-profile')
+const submitButtonEditProfile = document.querySelector('.popup__submit-button_edit-profile')
 const popupFormAddPhoto = document.querySelector('.popup__form_add-photo')
 const inputsAddphoto = popupFormAddPhoto.querySelectorAll('.popup__input')
 const inputsArrayAddPhoto = Array.from(inputsAddphoto)
@@ -26,6 +24,12 @@ const inputsArrayEditProfile = Array.from(inputsEditProfile)
 const cardTemplate = document.querySelector('.card-template')
 const avatar = document.querySelector('.avatar')
 const deleteButton = document.querySelector('.popup__submit-button_delete-card')
+const avatarIcon = document.querySelector('.avatar')
+const avatarPen = document.querySelector('.avatar__pen')
+const popupAvatar = document.querySelector('.popup_avatar')
+const formPopupAvatar = document.querySelector('.popup__form_avatar')
+const inputUrlAvatar = formPopupAvatar.avatarURL
+const submitButtonAvatar =  formPopupAvatar.querySelector('.popup__submit-button_avatar')
 
 import { Card } from '../components/Сard.js';
 import { FormValidator } from '../components/Validation.js'
@@ -47,7 +51,6 @@ const api = new Api({
 })
 
 const myId = await api.getUserID()
-console.log(myId);
 
 const popupWithImage = new PopupWithImage(popupImage)
 
@@ -89,34 +92,44 @@ function createCard(item) {
                 card.deleteButton()
             })
         }, addLike: () => {
-            api.addLike(item._id)
+            if (cardElement.querySelector('.card__like').className == 'card__like card__like_active') {
+                api.addLike(item._id)
+            } else {
+                api.deleteLike(item._id)
+            }
         }
     }, cardTemplate);
     const cardElement = card.generateCard();
     if (item.owner._id == myId) {
         cardElement.querySelector('.card__trash').classList.add('card__trash_active')
     }
-    if (item.owner._id == myId) {
-        cardElement.querySelector('.card__like').classList.add('card__like_active')
-    }
-    console.log(item.likes)
+    item.likes.forEach(element => {
+        if (element._id == myId) {
+            cardElement.querySelector('.card__like').classList.add('card__like_active')
+        }
+    })
     return cardElement
 }
-// // добавление начальных карточек
-// const defaultCards = new Section({
-//     items: initialCards, renderer: (item) => {
-//         defaultCards.addItem(createCard(item));
-//     }
-// }, cards)
 
-// defaultCards.renderItems() 
-
+function updateAvatar() {
+    submitButtonAvatar.textContent = 'Сохранение...'
+    api.updateAvatar({ avatar: inputUrlAvatar.value })
+    .then(lol => getUserInfo())
+    .finally(() => {
+        submitButtonAvatar.textContent = 'Сохранить'
+        popupUpdateAvatar.close()
+    })
+}
 //добавление юзером карточки
 function addNewCard() {
     const data = popupFormPhoto._getInputValues();
+    submitButtonAddphoto.textContent = 'Сохранение...'
     api.addCard({ name: data.nameAddPhoto, link: data.linkAddPhoto })
         .then(card => addCards())
-    // defaultCards.addItem(createCard({ title: data.nameAddPhoto, image: data.linkAddPhoto}));
+        .finally(() => {
+            submitButtonAddphoto.textContent = 'Сохранить'
+            popupFormPhoto.close()
+        })
 }
 
 // Валидация
@@ -126,7 +139,7 @@ const formAddPhoto = new FormValidator({
 }, popupFormAddPhoto)
 const formEditProfile = new FormValidator({
     errorClass: 'popup__input_invalid', disableButton: 'popup__submit-button_disabled',
-    submitButton: submitButtonAEditProfile, input: '.popup__input', inputsArray: inputsArrayEditProfile
+    submitButton: submitButtonEditProfile, input: '.popup__input', inputsArray: inputsArrayEditProfile
 }, popupFormEditProfile)
 
 function launchValidation(form) {
@@ -150,9 +163,15 @@ buttonAddPhoto.addEventListener('click', () => {
 const editProfile = new UserInfo({ name: nameProfile, aboutMe: hobbyProfile })
 
 function handleFormSubmitProfile() {
-    api.updateUserInfo({ name: inputNameProfile.value, about: inputHobbyProfile.value }
-    )
-    getUserInfo()
+    submitButtonEditProfile.textContent = 'Сохранение...'
+    api.updateUserInfo({ name: inputNameProfile.value, about: inputHobbyProfile.value })
+    .then(profile => {getUserInfo()})
+    .finally(() => {
+        submitButtonEditProfile.textContent = 'Сохранить'
+        popFormEditProfile.close()
+    })
+
+    
 }
 
 const popFormEditProfile = new PopupWithForm(popupEditProfile, () => {
@@ -167,7 +186,26 @@ editProfileBtn.addEventListener('click', () => {
 }
 )
 
+const popupUpdateAvatar = new PopupWithForm(popupAvatar, () => {
+    updateAvatar()
+
+});
+
+avatarIcon.addEventListener('click', () => {
+    popupUpdateAvatar.open();
+})
+
+avatarIcon.addEventListener('mouseover', () => {
+    avatarPen.classList.add('avatar__pen_active')
+})
+
+avatarIcon.addEventListener('mouseout', () => {
+    avatarPen.classList.remove('avatar__pen_active')
+})
+
+
 popFormEditProfile.setEventListeners()
 popupFormPhoto.setEventListeners()
 popupWithImage.setEventListeners()
 popupDeleteCard.setEventListeners()
+popupUpdateAvatar.setEventListeners()

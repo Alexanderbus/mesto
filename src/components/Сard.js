@@ -3,7 +3,6 @@ export class Card {
         this._title = title;
         this._image = image;
         this._likes = likes;
-        // this._ownerId = ownerId;
         this._template = template;
         this._handleCardClick = handleCardClick;
         this._confirmDelete = confirmDelete;
@@ -17,18 +16,15 @@ export class Card {
         return cardElement;
     }
 
-    _checkLikeStatus() {
-        this._likes.forEach(item => {
-          if (item._id === this._myId) {
-            this._cardLikeButton.classList.add("card__like-btn_active");
-            return 
-          }
-        }) 
-        this._counter.textContent = this._likesLength;
-      }
-
     likeButton() {
+        if (this._cardLike.className == 'card__like card__like_active') {
+            this._counterLike.textContent = Number(this._counterLike.textContent) - 1; 
+        } else {
+            this._counterLike.textContent = Number(this._counterLike.textContent) + 1;
+        }
         this._cardLike.classList.toggle('card__like_active');
+       
+        console.log( this._cardLike.className);
     }
 
     checkLikeStatus() {
@@ -45,6 +41,7 @@ export class Card {
 
     _setEventListeners() {
         this._cardLike = this._element.querySelector('.card__like')
+        this._counterLike = this._element.querySelector('.card__likeNumbers')
         this._cardLike.addEventListener('click', () => {
             this.likeButton();
             this._addLike()
@@ -66,7 +63,7 @@ export class Card {
         this._element.querySelector('.card__text').textContent = this._title;
         this._element.querySelector('.card__photo').alt = this._title;
         this._element.querySelector('.card__likeNumbers').textContent = this._likes.length;
-        
+
         return this._element;
     }
 
