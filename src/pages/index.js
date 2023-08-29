@@ -1,6 +1,4 @@
-// вебпаком упакую все на крайней итерацииb
-
-// import './index.css';
+import './index.css';
 const popupImage = document.querySelector('.pop-up-image')
 const popupConfirmDeleteCatd = document.querySelector('.popup_delete-card')
 const buttonAddPhoto = document.querySelector('.profile__add-photo');
@@ -49,7 +47,7 @@ const api = new Api({
         'Content-Type': 'application/json'
     }
 })
-
+ 
 const myId = await api.getUserID()
 
 const popupWithImage = new PopupWithImage(popupImage)
@@ -148,6 +146,7 @@ function launchValidation(form) {
 
 launchValidation(formAddPhoto)
 launchValidation(formEditProfile)
+
 
 const popupFormPhoto = new PopupWithForm(popupAddPhoto, () => {
     addNewCard()
