@@ -56,9 +56,8 @@ const popupWithImage = new PopupWithImage(popupImage)
 function getUserInfo() {
     api.getUserInfo()
         .then(userInfo => {
-            nameProfile.textContent = userInfo.name
-            hobbyProfile.textContent = userInfo.about
-            avatar.style.backgroundImage = `url(${userInfo.avatar})`
+            const UserInformation = new UserInfo({ name: nameProfile, aboutMe: hobbyProfile, avatar: avatar})
+            UserInformation.setUserInfo(userInfo.name, userInfo.about,  userInfo.avatar)
         })
 }
 getUserInfo()
@@ -91,9 +90,15 @@ function createCard(item) {
             })
         }, addLike: () => {
             if (cardElement.querySelector('.card__like').className == 'card__like card__like_active') {
-                api.addLike(item._id)
-            } else {
                 api.deleteLike(item._id)
+                .then( () => { 
+                    card.likeButton()
+                })
+            } else {
+                api.addLike(item._id)
+                .then(() => {
+                    card.likeButton()
+                })
             }
         }
     }, cardTemplate);

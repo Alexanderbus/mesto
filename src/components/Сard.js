@@ -12,7 +12,6 @@ export class Card {
     // получаем структуру карточки
     _getTemplate() {
         const cardElement = this._template.content.querySelector('.card').cloneNode(true);
-
         return cardElement;
     }
 
@@ -23,8 +22,6 @@ export class Card {
             this._counterLike.textContent = Number(this._counterLike.textContent) + 1;
         }
         this._cardLike.classList.toggle('card__like_active');
-       
-        console.log( this._cardLike.className);
     }
 
     checkLikeStatus() {
@@ -43,7 +40,7 @@ export class Card {
         this._cardLike = this._element.querySelector('.card__like')
         this._counterLike = this._element.querySelector('.card__likeNumbers')
         this._cardLike.addEventListener('click', () => {
-            this.likeButton();
+            // this.likeButton();
             this._addLike()
         });
         this._element.querySelector('.card__trash').addEventListener('click', () => {
