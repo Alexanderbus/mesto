@@ -38,16 +38,7 @@ import { UserInfo } from '../components/UserInfo.js'
 import { Api } from '../components/Api.js'
 import { PopupWithDelete } from '../components/PopupWithDelete.js'
 
-const popupWithDelete = new PopupWithDelete(popupConfirmDeleteCatd, (itemId) => {
-    api.delete(itemId)
-    .then((res) => {
-      console.log(res);
-      card.deleteButton()  
-      popupWithDelete.close();
-    })
-    .catch((error) => console.error(`Ошибка: ${error}`))
-    .finally(()=> popupWithDelete.resetDefaultText())
-  })
+const popupWithDelete = new PopupWithDelete(popupConfirmDeleteCatd, null)
 
 // const popupDeleteCard = new PopupDeleteCard(popupConfirmDeleteCatd)
 
@@ -72,7 +63,7 @@ function getUserInfo() {
         })
 }
 const defaultCards = new Section({
-        renderer: (item) => {
+    renderer: (item) => {
         defaultCards.addItem(createCard(item));
     }
 }, cards)
@@ -96,19 +87,31 @@ function createCard(item) {
     const card = new Card(item, {
         title: item.name, image: item.link, likes: item.likes, handleCardClick: () => {
             popupWithImage.open(item.link, item.name)
-        }, confirmDelete: popupWithDelete.open, addLike: () => {
-            if (cardElement.querySelector('.card__like').className == 'card__like card__like_active') {
-                api.deleteLike(item._id)
-                    .then(() => {
-                        card.likeButton()
-                    })
-            } else {
-                api.addLike(item._id)
-                    .then(() => {
-                        card.likeButton()
-                    })
+        }, confirmDelete:
+            (cardInstanse) => {
+                popupWithDelete.open();
+                popupWithDelete.setHandleAction(
+                    () => api.delete(cardInstanse.getID())
+                        .then(() => {
+                            cardInstanse.deleteButton()
+                            popupWithDelete.close();
+                        })
+                        .catch((error) => console.error(`Ошибка: ${error}`))
+                        .finally(() => popupWithDelete.resetDefaultText())
+                )
+            }, addLike: () => {
+                if (cardElement.querySelector('.card__like').className == 'card__like card__like_active') {
+                    api.deleteLike(item._id)
+                        .then(() => {
+                            card.likeButton()
+                        })
+                } else {
+                    api.addLike(item._id)
+                        .then(() => {
+                            card.likeButton()
+                        })
+                }
             }
-        }
     }, cardTemplate);
     const cardElement = card.generateCard();
     if (item.owner._id == myId) {

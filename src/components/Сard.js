@@ -47,12 +47,16 @@ export class Card {
         });
         this._element.querySelector('.card__trash').addEventListener('click', () => {
             // this._deleteButton();
-            this._confirmDelete()
+            this._confirmDelete(this)
         });
         this._cardPhoto .addEventListener('click', () => {
             this._handleCardClick()
         }
         );
+    }
+
+    getID() {
+        return this._cardId
     }
 
     generateCard() {
@@ -67,4 +71,3 @@ export class Card {
     }
 
 }
-

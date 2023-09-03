@@ -9,6 +9,10 @@ export class PopupWithDelete extends Popup {
     this._defaultSubmitButtonText = this._submitButton.textContent;
   }
 
+  setHandleAction(action) {
+    this._submitFunction =  action;
+  }
+
   setEventListeners() {
     super.setEventListeners();
     this._form.addEventListener("submit", (evt) => {
@@ -22,9 +26,4 @@ export class PopupWithDelete extends Popup {
     this._submitButton.textContent = this._defaultSubmitButtonText;
   }
 
-  open = ({card, cardId}) => {
-    super.open();
-    this._element = card;
-    this._cardId = cardId;
-  };
 }
