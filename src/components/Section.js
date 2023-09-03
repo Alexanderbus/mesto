@@ -1,13 +1,12 @@
 export class Section {
-  constructor({ items, renderer }, containerSelector) {
-    this._Items = items;
+  constructor({ renderer }, containerSelector) {
     this._renderer = renderer;
     this._container = containerSelector;
   }
 
 
-  renderItems() {
-    this._Items.forEach(item => {
+  renderItems(daraCards) {
+    daraCards.forEach(item => {
       this._renderer(item);
     });
   }

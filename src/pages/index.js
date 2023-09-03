@@ -27,7 +27,7 @@ const avatarPen = document.querySelector('.pencil')
 const popupAvatar = document.querySelector('.popup_avatar')
 const formPopupAvatar = document.querySelector('.popup__form_avatar')
 const inputUrlAvatar = formPopupAvatar.avatarURL
-const submitButtonAvatar =  formPopupAvatar.querySelector('.popup__submit-button_avatar')
+const submitButtonAvatar = formPopupAvatar.querySelector('.popup__submit-button_avatar')
 
 import { Card } from '../components/Сard.js';
 import { FormValidator } from '../components/Validation.js'
@@ -36,9 +36,20 @@ import { PopupWithImage } from '../components/PopupWithImage.js'
 import { PopupWithForm } from '../components/PopupWithForm.js'
 import { UserInfo } from '../components/UserInfo.js'
 import { Api } from '../components/Api.js'
-import { PopupDeleteCard } from '../components/PopupDeleteCard.js'
+import { PopupWithDelete } from '../components/PopupWithDelete.js'
 
-const popupDeleteCard = new PopupDeleteCard(popupConfirmDeleteCatd)
+const popupWithDelete = new PopupWithDelete(popupConfirmDeleteCatd, (itemId) => {
+    api.delete(itemId)
+    .then((res) => {
+      console.log(res);
+      card.deleteButton()  
+      popupWithDelete.close();
+    })
+    .catch((error) => console.error(`Ошибка: ${error}`))
+    .finally(()=> popupWithDelete.resetDefaultText())
+  })
+
+// const popupDeleteCard = new PopupDeleteCard(popupConfirmDeleteCatd)
 
 const api = new Api({
     url: 'https://nomoreparties.co/v1/cohort-70',
@@ -47,7 +58,7 @@ const api = new Api({
         'Content-Type': 'application/json'
     }
 })
- 
+
 const myId = await api.getUserID()
 
 const popupWithImage = new PopupWithImage(popupImage)
@@ -56,49 +67,46 @@ const popupWithImage = new PopupWithImage(popupImage)
 function getUserInfo() {
     api.getUserInfo()
         .then(userInfo => {
-            const UserInformation = new UserInfo({ name: nameProfile, aboutMe: hobbyProfile, avatar: avatar})
-            UserInformation.setUserInfo(userInfo.name, userInfo.about,  userInfo.avatar)
+            const UserInformation = new UserInfo({ name: nameProfile, aboutMe: hobbyProfile, avatar: avatar })
+            UserInformation.setUserInfo(userInfo.name, userInfo.about, userInfo.avatar)
         })
 }
-getUserInfo()
+const defaultCards = new Section({
+        renderer: (item) => {
+        defaultCards.addItem(createCard(item));
+    }
+}, cards)
 
 //добавление начальных карточек с сервера
 function addCards() {
     api.getCards()
         .then(data => {
             const revesrData = data.reverse()
-            const defaultCards = new Section({
-                items: revesrData, renderer: (item) => {
-                    defaultCards.addItem(createCard(item));
-                }
-            }, cards)
-            defaultCards.renderItems()
+            defaultCards.renderItems(revesrData)
         }
         )
 }
-addCards()
+
+Promise.all([getUserInfo(), addCards()])
+    .catch(err => {
+        console.log('ошибка');
+    })
 
 function createCard(item) {
-    const card = new Card({
+    const card = new Card(item, {
         title: item.name, image: item.link, likes: item.likes, handleCardClick: () => {
             popupWithImage.open(item.link, item.name)
-        }, confirmDelete: () => {
-            popupDeleteCard.open()
-            deleteButton.addEventListener('click', () => {
-                popupDeleteCard.deleteCard(api.delete(item._id))
-                card.deleteButton()
-            })
-        }, addLike: () => {
+        }, confirmDelete: popupWithDelete.open, addLike: () => {
             if (cardElement.querySelector('.card__like').className == 'card__like card__like_active') {
                 api.deleteLike(item._id)
-                .then( () => { 
-                    card.likeButton()
-                })
+                    .then(() => {
+                        card.likeButton()
+                    })
             } else {
                 api.addLike(item._id)
-                .then(() => {
-                    card.likeButton()
-                })
+                    .then(() => {
+                        card.likeButton()
+                    })
             }
         }
     }, cardTemplate);
@@ -117,11 +125,11 @@ function createCard(item) {
 function updateAvatar() {
     submitButtonAvatar.textContent = 'Сохранение...'
     api.updateAvatar({ avatar: inputUrlAvatar.value })
-    .then(lol => getUserInfo())
-    .finally(() => {
-        submitButtonAvatar.textContent = 'Сохранить'
-        popupUpdateAvatar.close()
-    })
+        .then(lol => getUserInfo())
+        .finally(() => {
+            submitButtonAvatar.textContent = 'Сохранить'
+            popupUpdateAvatar.close()
+        })
 }
 //добавление юзером карточки
 function addNewCard() {
@@ -169,13 +177,13 @@ const editProfile = new UserInfo({ name: nameProfile, aboutMe: hobbyProfile })
 function handleFormSubmitProfile() {
     submitButtonEditProfile.textContent = 'Сохранение...'
     api.updateUserInfo({ name: inputNameProfile.value, about: inputHobbyProfile.value })
-    .then(profile => {getUserInfo()})
-    .finally(() => {
-        submitButtonEditProfile.textContent = 'Сохранить'
-        popFormEditProfile.close()
-    })
+        .then(profile => { getUserInfo() })
+        .finally(() => {
+            submitButtonEditProfile.textContent = 'Сохранить'
+            popFormEditProfile.close()
+        })
 
-    
+
 }
 
 const popFormEditProfile = new PopupWithForm(popupEditProfile, () => {
@@ -211,5 +219,5 @@ avatarIcon.addEventListener('mouseout', () => {
 popFormEditProfile.setEventListeners()
 popupFormPhoto.setEventListeners()
 popupWithImage.setEventListeners()
-popupDeleteCard.setEventListeners()
+popupWithDelete.setEventListeners()
 popupUpdateAvatar.setEventListeners()

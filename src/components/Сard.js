@@ -1,5 +1,5 @@
 export class Card {
-    constructor({ title, image, likes, handleCardClick, confirmDelete, addLike }, template) {
+    constructor( data, { title, image, likes, handleCardClick, confirmDelete, addLike }, template) {
         this._title = title;
         this._image = image;
         this._likes = likes;
@@ -7,6 +7,7 @@ export class Card {
         this._handleCardClick = handleCardClick;
         this._confirmDelete = confirmDelete;
         this._addLike = addLike
+        this._cardId = data._id;
     }
 
     // получаем структуру карточки
@@ -38,6 +39,7 @@ export class Card {
 
     _setEventListeners() {
         this._cardLike = this._element.querySelector('.card__like')
+        this._cardPhoto = this._element.querySelector('.card__photo')
         this._counterLike = this._element.querySelector('.card__likeNumbers')
         this._cardLike.addEventListener('click', () => {
             // this.likeButton();
@@ -47,7 +49,7 @@ export class Card {
             // this._deleteButton();
             this._confirmDelete()
         });
-        this._element.querySelector('.card__photo').addEventListener('click', () => {
+        this._cardPhoto .addEventListener('click', () => {
             this._handleCardClick()
         }
         );
@@ -56,9 +58,9 @@ export class Card {
     generateCard() {
         this._element = this._getTemplate();
         this._setEventListeners();
-        this._element.querySelector('.card__photo').src = this._image;
+        this._cardPhoto .src = this._image;
         this._element.querySelector('.card__text').textContent = this._title;
-        this._element.querySelector('.card__photo').alt = this._title;
+        this._cardPhoto .alt = this._title;
         this._element.querySelector('.card__likeNumbers').textContent = this._likes.length;
 
         return this._element;

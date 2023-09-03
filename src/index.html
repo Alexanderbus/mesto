@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Место</title>
 </head>
+
 <body class="body">
     <div class="page">
         <header class="header">
@@ -49,10 +50,9 @@
                 <button class="popup__exit popup__exit_add-photo" type="button"></button>
                 <h2 class="popup__header">Новое место</h2>
                 <form class="popup__form popup__form_add-photo" novalidate>
-                    <input id="namePhoto" class="popup__input popup__input_NameCard" name="nameAddPhoto"
-                        type="text" placeholder="Название" autocomplete="off" required minlength="2"
-                        maxlength="30">
-                    <div id="namePhotoError" class="popup__error"></div> 
+                    <input id="namePhoto" class="popup__input popup__input_NameCard" name="nameAddPhoto" type="text"
+                        placeholder="Название" autocomplete="off" required minlength="2" maxlength="30">
+                    <div id="namePhotoError" class="popup__error"></div>
                     <input id="urlPhoto" class="popup__input popup__input_UrlCard" name="linkAddPhoto" type="url"
                         placeholder="Ссылка на картинку" autocomplete="off" required>
                     <div id="urlPhotoError" class="popup__error"></div>
@@ -62,28 +62,31 @@
         </div>
         <div class="pop-up-image popup">
             <div class="pop-up-image__container">
-                <img class="popup__exit pop-up-image__closeBtn" src="<%=require('./images/CloseIcon.svg')%>" alt="кнопка закрытия">
+                <img class="popup__exit pop-up-image__closeBtn" src="<%=require('./images/CloseIcon.svg')%>"
+                    alt="кнопка закрытия">
                 <img class="pop-up-image__pic" alt="">
                 <p class="pop-up-image__title"></p>
             </div>
         </div>
         <div class="popup popup_delete-card">
             <div class="popup__container">
-            <button class="popup__exit popup__exit_delete-card" type="button"></button>
-            <h2 class="popup__header">Вы уверены?</h2>
-            <button class="popup__submit-button popup__submit-button_delete-card" type="submit">Да</button>
+                <button class="popup__exit popup__exit_delete-card" type="button"></button>
+                <h2 class="popup__header">Вы уверены?</h2>
+                <form class="popup__form popup__form_deleteCard" name="delete-form" novalidate>
+                    <button class="popup__submit-button popup__submit-button_delete-card" type="submit">Да</button>
+                </form>
             </div>
         </div>
         <div class="popup popup_avatar">
             <div class="popup__container">
-            <button class="popup__exit popup__exit_delete-card" type="button"></button>
-            <h2 class="popup__header">Обновить аватар</h2>
-            <form class="popup__form popup__form_avatar" novalidate>
-                <input id="avatarURL" name="avatarURL" class="popup__input popup__input_avararURL"
-                    type="url" placeholder="ссылка на картинку" autocomplete="off" required>
-                <div id="avatarUrlError" class="popup__error"></div> 
-                <button class="popup__submit-button popup__submit-button_avatar" type="submit">Сохранить</button>
-            </form>
+                <button class="popup__exit popup__exit_delete-card" type="button"></button>
+                <h2 class="popup__header">Обновить аватар</h2>
+                <form class="popup__form popup__form_avatar" novalidate>
+                    <input id="avatarURL" name="avatarURL" class="popup__input popup__input_avararURL" type="url"
+                        placeholder="ссылка на картинку" autocomplete="off" required>
+                    <div id="avatarUrlError" class="popup__error"></div>
+                    <button class="popup__submit-button popup__submit-button_avatar" type="submit">Сохранить</button>
+                </form>
             </div>
         </div>
 
