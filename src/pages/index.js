@@ -30,7 +30,7 @@ const inputUrlAvatar = formPopupAvatar.avatarURL
 const submitButtonAvatar = formPopupAvatar.querySelector('.popup__submit-button_avatar')
 
 import { Card } from '../components/Сard.js';
-import { FormValidator } from '../components/Validation.js'
+import { FormValidator } from '../components/FormValidator.js'
 import { Section } from '../components/Section.js'
 import { PopupWithImage } from '../components/PopupWithImage.js'
 import { PopupWithForm } from '../components/PopupWithForm.js'
@@ -54,13 +54,14 @@ const myId = await api.getUserID()
 
 const popupWithImage = new PopupWithImage(popupImage)
 
-//Узнаем информацию юзера и добавляем 
+// //Узнаем информацию юзера и добавляем 
 function getUserInfo() {
     api.getUserInfo()
         .then(userInfo => {
-            const UserInformation = new UserInfo({ name: nameProfile, aboutMe: hobbyProfile, avatar: avatar })
-            UserInformation.setUserInfo(userInfo.name, userInfo.about, userInfo.avatar)
+            const userInformation = new UserInfo({ name: nameProfile, aboutMe: hobbyProfile, avatar: avatar })
+            userInformation.setUserInfo(userInfo.name, userInfo.about, userInfo.avatar)
         })
+        .catch((error) => console.error(`Ошибка: ${error}`))
 }
 const defaultCards = new Section({
     renderer: (item) => {
@@ -76,11 +77,17 @@ function addCards() {
             defaultCards.renderItems(revesrData)
         }
         )
+        .catch((error) => console.error(`Ошибка: ${error}`))
+
 }
 
-Promise.all([getUserInfo(), addCards()])
-    .catch(err => {
-        console.log('ошибка');
+Promise.all([api.getUserInfo(), api.getCards()])
+.then(([userData, initialCards]) => { 
+        const userInformation = new UserInfo({ name: nameProfile, aboutMe: hobbyProfile, avatar: avatar })
+        userInformation.setUserInfo(userData.name, userData.about, userData.avatar)
+        const revesrData = initialCards.reverse()
+        defaultCards.renderItems(revesrData)
+
     })
 
 function createCard(item) {
@@ -105,11 +112,13 @@ function createCard(item) {
                         .then(() => {
                             card.likeButton()
                         })
+                        .catch((error) => console.error(`Ошибка: ${error}`))
                 } else {
                     api.addLike(item._id)
                         .then(() => {
                             card.likeButton()
                         })
+                        .catch((error) => console.error(`Ошибка: ${error}`))
                 }
             }
     }, cardTemplate);
@@ -129,6 +138,7 @@ function updateAvatar() {
     submitButtonAvatar.textContent = 'Сохранение...'
     api.updateAvatar({ avatar: inputUrlAvatar.value })
         .then(lol => getUserInfo())
+        .catch((error) => console.error(`Ошибка: ${error}`))
         .finally(() => {
             submitButtonAvatar.textContent = 'Сохранить'
             popupUpdateAvatar.close()
@@ -140,6 +150,7 @@ function addNewCard() {
     submitButtonAddphoto.textContent = 'Сохранение...'
     api.addCard({ name: data.nameAddPhoto, link: data.linkAddPhoto })
         .then(card => addCards())
+        .catch((error) => console.error(`Ошибка: ${error}`))
         .finally(() => {
             submitButtonAddphoto.textContent = 'Сохранить'
             popupFormPhoto.close()
@@ -181,6 +192,7 @@ function handleFormSubmitProfile() {
     submitButtonEditProfile.textContent = 'Сохранение...'
     api.updateUserInfo({ name: inputNameProfile.value, about: inputHobbyProfile.value })
         .then(profile => { getUserInfo() })
+        .catch((error) => console.error(`Ошибка: ${error}`))
         .finally(() => {
             submitButtonEditProfile.textContent = 'Сохранить'
             popFormEditProfile.close()

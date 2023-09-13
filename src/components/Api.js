@@ -11,6 +11,13 @@ export class Api {
         this._headers = config.headers;
     }
 
+    handleResponse(res) {
+        if (res.ok) {
+            return res.json();
+        }
+        throw new Error('Произошла ошибка:(')
+    }
+
     getCards() {
         return fetch(`${this._url}/cards`, {
             headers: this._headers
