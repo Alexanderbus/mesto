@@ -32,7 +32,7 @@ export class Card {
             }
         });
     }
-
+    
     deleteButton() {
         this._element.remove();
     }

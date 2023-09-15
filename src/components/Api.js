@@ -90,5 +90,8 @@ export class Api {
             body: JSON.stringify(data)
         })
             .then(handleResponse)
+            .then(data => {
+                return data
+            })
     }
     }

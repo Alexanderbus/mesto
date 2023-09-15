@@ -1,4 +1,5 @@
 import './index.css';
+let userId = ''
 const popupImage = document.querySelector('.pop-up-image')
 const popupConfirmDeleteCatd = document.querySelector('.popup_delete-card')
 const buttonAddPhoto = document.querySelector('.profile__add-photo');
@@ -87,8 +88,11 @@ Promise.all([api.getUserInfo(), api.getCards()])
         userInformation.setUserInfo(userData.name, userData.about, userData.avatar)
         const revesrData = initialCards.reverse()
         defaultCards.renderItems(revesrData)
-
+        userId = userData._id
     })
+.catch((error) => console.error(`Ошибка: ${error}`))
+
+console.log(userId);
 
 function createCard(item) {
     const card = new Card(item, {
@@ -137,7 +141,9 @@ function createCard(item) {
 function updateAvatar() {
     submitButtonAvatar.textContent = 'Сохранение...'
     api.updateAvatar({ avatar: inputUrlAvatar.value })
-        .then(lol => getUserInfo())
+        .then(ava => {
+            avatar.style.backgroundImage = `url('${ava.avatar}')`;
+        })
         .catch((error) => console.error(`Ошибка: ${error}`))
         .finally(() => {
             submitButtonAvatar.textContent = 'Сохранить'
@@ -149,7 +155,9 @@ function addNewCard() {
     const data = popupFormPhoto._getInputValues();
     submitButtonAddphoto.textContent = 'Сохранение...'
     api.addCard({ name: data.nameAddPhoto, link: data.linkAddPhoto })
-        .then(card => addCards())
+        .then(card => {
+
+        })
         .catch((error) => console.error(`Ошибка: ${error}`))
         .finally(() => {
             submitButtonAddphoto.textContent = 'Сохранить'
