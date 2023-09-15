@@ -1,5 +1,4 @@
 import './index.css';
-let userId = ''
 const popupImage = document.querySelector('.pop-up-image')
 const popupConfirmDeleteCatd = document.querySelector('.popup_delete-card')
 const buttonAddPhoto = document.querySelector('.profile__add-photo');
@@ -82,6 +81,7 @@ function addCards() {
 
 }
 
+let userId = ''
 Promise.all([api.getUserInfo(), api.getCards()])
 .then(([userData, initialCards]) => { 
         const userInformation = new UserInfo({ name: nameProfile, aboutMe: hobbyProfile, avatar: avatar })
@@ -125,16 +125,8 @@ function createCard(item) {
                         .catch((error) => console.error(`Ошибка: ${error}`))
                 }
             }
-    }, cardTemplate);
+    }, cardTemplate, myId);
     const cardElement = card.generateCard();
-    if (item.owner._id == myId) {
-        cardElement.querySelector('.card__trash').classList.add('card__trash_active')
-    }
-    item.likes.forEach(element => {
-        if (element._id == myId) {
-            cardElement.querySelector('.card__like').classList.add('card__like_active')
-        }
-    })
     return cardElement
 }
 

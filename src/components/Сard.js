@@ -1,5 +1,5 @@
 export class Card {
-    constructor( data, { title, image, likes, handleCardClick, confirmDelete, addLike }, template) {
+    constructor( data, { title, image, likes, handleCardClick, confirmDelete, addLike }, template, userID) {
         this._title = title;
         this._image = image;
         this._likes = likes;
@@ -8,6 +8,8 @@ export class Card {
         this._confirmDelete = confirmDelete;
         this._addLike = addLike
         this._cardId = data._id;
+        this._userID = userID;
+        this._ownerId = data.owner._id
     }
 
     // получаем структуру карточки
@@ -59,14 +61,28 @@ export class Card {
         return this._cardId
     }
 
+    _addTrash() {
+        if(this._userID ==  this._ownerId)
+        this._element.querySelector('.card__trash').classList.add('card__trash_active')
+    }
+
+    _activateLike() {
+        this._likes.forEach(element => {
+            if (element._id == this._userID) {
+                this._element.querySelector('.card__like').classList.add('card__like_active')
+            }
+        })   
+    }
+
     generateCard() {
         this._element = this._getTemplate();
         this._setEventListeners();
-        this._cardPhoto .src = this._image;
+        this._cardPhoto.src = this._image;
         this._element.querySelector('.card__text').textContent = this._title;
         this._cardPhoto .alt = this._title;
         this._element.querySelector('.card__likeNumbers').textContent = this._likes.length;
-
+        this._addTrash();
+        this._activateLike();
         return this._element;
     }
 
