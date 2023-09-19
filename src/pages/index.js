@@ -27,8 +27,9 @@ const avatarPen = document.querySelector('.pencil')
 const popupAvatar = document.querySelector('.popup_avatar')
 const formPopupAvatar = document.querySelector('.popup__form_avatar')
 const inputUrlAvatar = formPopupAvatar.avatarURL
-const inputUrlAvatarArray = Array.from(inputUrlAvatar)
+const inputUrlAvatarArray = [inputUrlAvatar]
 const submitButtonAvatar = formPopupAvatar.querySelector('.popup__submit-button_avatar')
+console.log(inputUrlAvatarArray)
 
 import { Card } from '../components/Сard.js';
 import { FormValidator } from '../components/FormValidator.js'
