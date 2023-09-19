@@ -1,20 +1,20 @@
 export class FormValidator {
     constructor(config, formSelector) {
-        this._errorClass = config.errorClass;  // popup__input_invalid 
-        this._disableButton = config.disableButton; // popup__submit-button_disabled
+        // this._errorClass = config.errorClass;  // popup__input_invalid 
+        // this._disableButton = config.disableButton; // popup__submit-button_disabled
         this._submitButton = config.submitButton // popup__submit-button
-        this._input = config.input; // popup__input
+        // this._input = config.input; // popup__input 
         this._inputsArray = config.inputsArray; 
         this._formSelector = formSelector;
     }
 
     setInputValidState(input, errorElement) {
-        input.classList.remove(this._errorClass)
+        input.classList.remove('popup__input_invalid')
         errorElement.textContent = ''
     }
 
     _setInputInvalidState(input, errorElement) {
-        input.classList.add(this._errorClass)
+        input.classList.add('popup__input_invalid')
         errorElement.textContent = input.validationMessage
     }
 
@@ -37,12 +37,12 @@ export class FormValidator {
 
     disableButton() {
         this._submitButton.setAttribute('disabled', '')
-        this._submitButton.classList.add(this._disableButton);
+        this._submitButton.classList.add('popup__submit-button_disabled');
     }
 
     _enableButton() {
         this._submitButton.removeAttribute('disabled')
-        this._submitButton.classList.remove(this._disableButton);
+        this._submitButton.classList.remove('popup__submit-button_disabled');
     }
 
     _toggleButtonValidity() {

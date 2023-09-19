@@ -89,14 +89,14 @@ function addCards() {
 
 let userId = ''
 Promise.all([api.getUserInfo(), api.getCards()])
-.then(([userData, initialCards]) => { 
+    .then(([userData, initialCards]) => {
         userId = userData._id
         const userInformation = new UserInfo({ name: nameProfile, aboutMe: hobbyProfile, avatar: avatar })
         userInformation.setUserInfo(userData.name, userData.about, userData.avatar)
         const revesrData = initialCards.reverse()
         defaultCards.renderItems(revesrData)
     })
-.catch((error) => console.error(`Ошибка: ${error}`))
+    .catch((error) => console.error(`Ошибка: ${error}`))
 
 console.log(userId);
 
@@ -166,16 +166,13 @@ function addNewCard() {
 
 // Валидация
 const formAddPhoto = new FormValidator({
-    errorClass: 'popup__input_invalid', disableButton: 'popup__submit-button_disabled', //это написано у меня четко по вебинару от куратора
-    submitButton: submitButtonAddphoto, input: '.popup__input', inputsArray: inputsArrayAddPhoto //это написано у меня четко по вебинару от куратора
+    submitButton: submitButtonAddphoto, inputsArray: inputsArrayAddPhoto 
 }, popupFormAddPhoto)
 const formEditProfile = new FormValidator({
-    errorClass: 'popup__input_invalid', disableButton: 'popup__submit-button_disabled', //это написано у меня четко по вебинару от куратора
-    submitButton: submitButtonEditProfile, input: '.popup__input', inputsArray: inputsArrayEditProfile //это написано у меня четко по вебинару от куратора
+    submitButton: submitButtonEditProfile, inputsArray: inputsArrayEditProfile 
 }, popupFormEditProfile)
 const formAvatar = new FormValidator({
-    errorClass: 'popup__input_invalid', disableButton: 'popup__submit-button_disabled', //это написано у меня четко по вебинару от куратора
-    submitButton: submitButtonAvatar, input: '.popup__input', inputsArray: inputUrlAvatarArray //это написано у меня четко по вебинару от куратора
+    submitButton: submitButtonAvatar, inputsArray: inputUrlAvatarArray 
 }, formPopupAvatar)
 
 function launchValidation(form) {
@@ -206,8 +203,9 @@ function handleFormSubmitProfile() {
     submitButtonEditProfile.textContent = 'Сохранение...'
     const data = popFormEditProfile.getInputValues()
     api.updateUserInfo({ name: data.nameEditProfile, about: data.aboutEditProfile })
-        .then(profile => { getUserInfo();
-            popFormEditProfile.close() 
+        .then(profile => {
+            getUserInfo();
+            popFormEditProfile.close()
         })
         .catch((error) => console.error(`Ошибка: ${error}`))
         .finally(() => {
@@ -219,6 +217,8 @@ function handleFormSubmitProfile() {
 
 editProfileBtn.addEventListener('click', () => {
     popFormEditProfile.open()
+    formEditProfile.disableButton()
+    formEditProfile.resetError()
     const nameInfo = userInformation.getUserInfo()
     inputNameProfile.value = nameInfo.name;
     inputHobbyProfile.value = nameInfo.aboutMe;
