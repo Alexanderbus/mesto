@@ -56,8 +56,7 @@ const api = new Api({
     }
 })
 
-const myId = await api.getUserID()
-const editProfile = new UserInfo({ name: nameProfile, aboutMe: hobbyProfile })
+// const editProfile = new UserInfo({ name: nameProfile, aboutMe: hobbyProfile })
 const userInformation = new UserInfo({ name: nameProfile, aboutMe: hobbyProfile, avatar: avatar })
 const popupWithImage = new PopupWithImage(popupImage)
 
@@ -91,11 +90,11 @@ function addCards() {
 let userId = ''
 Promise.all([api.getUserInfo(), api.getCards()])
 .then(([userData, initialCards]) => { 
+        userId = userData._id
         const userInformation = new UserInfo({ name: nameProfile, aboutMe: hobbyProfile, avatar: avatar })
         userInformation.setUserInfo(userData.name, userData.about, userData.avatar)
         const revesrData = initialCards.reverse()
         defaultCards.renderItems(revesrData)
-        userId = userData._id
     })
 .catch((error) => console.error(`Ошибка: ${error}`))
 
@@ -132,7 +131,7 @@ function createCard(item) {
                         .catch((error) => console.error(`Ошибка: ${error}`))
                 }
             }
-    }, cardTemplate, myId);
+    }, cardTemplate, userId);
     const cardElement = card.generateCard();
     return cardElement
 }
