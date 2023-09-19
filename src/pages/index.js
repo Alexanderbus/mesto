@@ -21,12 +21,13 @@ const inputsEditProfile = popupFormEditProfile.querySelectorAll('.popup__input')
 const inputsArrayEditProfile = Array.from(inputsEditProfile)
 const cardTemplate = document.querySelector('.card-template')
 const avatar = document.querySelector('.avatar')
-const deleteButton = document.querySelector('.popup__submit-button_delete-card')
+// const deleteButton = document.querySelector('.popup__submit-button_delete-card')
 const avatarIcon = document.querySelector('.avatar')
 const avatarPen = document.querySelector('.pencil')
 const popupAvatar = document.querySelector('.popup_avatar')
 const formPopupAvatar = document.querySelector('.popup__form_avatar')
 const inputUrlAvatar = formPopupAvatar.avatarURL
+const inputUrlAvatarArray = Array.from(inputUrlAvatar)
 const submitButtonAvatar = formPopupAvatar.querySelector('.popup__submit-button_avatar')
 
 import { Card } from '../components/Сard.js';
@@ -37,6 +38,11 @@ import { PopupWithForm } from '../components/PopupWithForm.js'
 import { UserInfo } from '../components/UserInfo.js'
 import { Api } from '../components/Api.js'
 import { PopupWithDelete } from '../components/PopupWithDelete.js'
+
+const popupUpdateAvatar = new PopupWithForm(popupAvatar, () => {
+    updateAvatar()
+
+});
 
 const popupWithDelete = new PopupWithDelete(popupConfirmDeleteCatd, null)
 
@@ -51,18 +57,19 @@ const api = new Api({
 })
 
 const myId = await api.getUserID()
-
+const editProfile = new UserInfo({ name: nameProfile, aboutMe: hobbyProfile })
+const userInformation = new UserInfo({ name: nameProfile, aboutMe: hobbyProfile, avatar: avatar })
 const popupWithImage = new PopupWithImage(popupImage)
 
 // //Узнаем информацию юзера и добавляем 
 function getUserInfo() {
     api.getUserInfo()
         .then(userInfo => {
-            const userInformation = new UserInfo({ name: nameProfile, aboutMe: hobbyProfile, avatar: avatar })
             userInformation.setUserInfo(userInfo.name, userInfo.about, userInfo.avatar)
         })
         .catch((error) => console.error(`Ошибка: ${error}`))
 }
+
 const defaultCards = new Section({
     renderer: (item) => {
         defaultCards.addItem(createCard(item));
@@ -113,14 +120,14 @@ function createCard(item) {
             }, addLike: () => {
                 if (cardElement.querySelector('.card__like').className == 'card__like card__like_active') {
                     api.deleteLike(item._id)
-                        .then(() => {
-                            card.likeButton()
+                        .then((data) => {
+                            card.likeButton(data.likes.length)
                         })
                         .catch((error) => console.error(`Ошибка: ${error}`))
                 } else {
                     api.addLike(item._id)
-                        .then(() => {
-                            card.likeButton()
+                        .then((data) => {
+                            card.likeButton(data.likes.length)
                         })
                         .catch((error) => console.error(`Ошибка: ${error}`))
                 }
@@ -132,40 +139,45 @@ function createCard(item) {
 
 function updateAvatar() {
     submitButtonAvatar.textContent = 'Сохранение...'
-    api.updateAvatar({ avatar: inputUrlAvatar.value })
+    const data = popupUpdateAvatar.getInputValues();
+    api.updateAvatar({ avatar: data.avatarURL })
         .then(ava => {
             avatar.style.backgroundImage = `url('${ava.avatar}')`;
+            popupUpdateAvatar.close()
         })
         .catch((error) => console.error(`Ошибка: ${error}`))
         .finally(() => {
             submitButtonAvatar.textContent = 'Сохранить'
-            popupUpdateAvatar.close()
         })
 }
 //добавление юзером карточки
 function addNewCard() {
-    const data = popupFormPhoto._getInputValues();
+    const data = popupFormPhoto.getInputValues();
     submitButtonAddphoto.textContent = 'Сохранение...'
     api.addCard({ name: data.nameAddPhoto, link: data.linkAddPhoto })
         .then(card => {
-
+            defaultCards.addItem(createCard(card))
+            popupFormPhoto.close()
         })
         .catch((error) => console.error(`Ошибка: ${error}`))
         .finally(() => {
             submitButtonAddphoto.textContent = 'Сохранить'
-            popupFormPhoto.close()
         })
 }
 
 // Валидация
 const formAddPhoto = new FormValidator({
-    errorClass: 'popup__input_invalid', disableButton: 'popup__submit-button_disabled',
-    submitButton: submitButtonAddphoto, input: '.popup__input', inputsArray: inputsArrayAddPhoto
+    errorClass: 'popup__input_invalid', disableButton: 'popup__submit-button_disabled', //это написано у меня четко по вебинару от куратора
+    submitButton: submitButtonAddphoto, input: '.popup__input', inputsArray: inputsArrayAddPhoto //это написано у меня четко по вебинару от куратора
 }, popupFormAddPhoto)
 const formEditProfile = new FormValidator({
-    errorClass: 'popup__input_invalid', disableButton: 'popup__submit-button_disabled',
-    submitButton: submitButtonEditProfile, input: '.popup__input', inputsArray: inputsArrayEditProfile
+    errorClass: 'popup__input_invalid', disableButton: 'popup__submit-button_disabled', //это написано у меня четко по вебинару от куратора
+    submitButton: submitButtonEditProfile, input: '.popup__input', inputsArray: inputsArrayEditProfile //это написано у меня четко по вебинару от куратора
 }, popupFormEditProfile)
+const formAvatar = new FormValidator({
+    errorClass: 'popup__input_invalid', disableButton: 'popup__submit-button_disabled', //это написано у меня четко по вебинару от куратора
+    submitButton: submitButtonAvatar, input: '.popup__input', inputsArray: inputUrlAvatarArray //это написано у меня четко по вебинару от куратора
+}, formPopupAvatar)
 
 function launchValidation(form) {
     form.enableValidation()
@@ -173,6 +185,7 @@ function launchValidation(form) {
 
 launchValidation(formAddPhoto)
 launchValidation(formEditProfile)
+launchValidation(formAvatar)
 
 
 const popupFormPhoto = new PopupWithForm(popupAddPhoto, () => {
@@ -182,44 +195,41 @@ const popupFormPhoto = new PopupWithForm(popupAddPhoto, () => {
 
 buttonAddPhoto.addEventListener('click', () => {
     popupFormPhoto.open()
-    formAddPhoto.disableButton(submitButtonAddphoto)
+    formAddPhoto.disableButton() // если я это уберу, кнопка будет активной при открытии поп-апа, это написано у меня четко по вебинару от куратора
     formAddPhoto.resetError()
 })
-
-const editProfile = new UserInfo({ name: nameProfile, aboutMe: hobbyProfile })
-
-function handleFormSubmitProfile() {
-    submitButtonEditProfile.textContent = 'Сохранение...'
-    api.updateUserInfo({ name: inputNameProfile.value, about: inputHobbyProfile.value })
-        .then(profile => { getUserInfo() })
-        .catch((error) => console.error(`Ошибка: ${error}`))
-        .finally(() => {
-            submitButtonEditProfile.textContent = 'Сохранить'
-            popFormEditProfile.close()
-        })
-
-
-}
 
 const popFormEditProfile = new PopupWithForm(popupEditProfile, () => {
     handleFormSubmitProfile();
 });
 
+function handleFormSubmitProfile() {
+    submitButtonEditProfile.textContent = 'Сохранение...'
+    const data = popFormEditProfile.getInputValues()
+    api.updateUserInfo({ name: data.nameEditProfile, about: data.aboutEditProfile })
+        .then(profile => { getUserInfo();
+            popFormEditProfile.close() 
+        })
+        .catch((error) => console.error(`Ошибка: ${error}`))
+        .finally(() => {
+            submitButtonEditProfile.textContent = 'Сохранить'
+        })
+
+
+}
+
 editProfileBtn.addEventListener('click', () => {
     popFormEditProfile.open()
-    const nameInfo = editProfile.getUserInfo()
+    const nameInfo = userInformation.getUserInfo()
     inputNameProfile.value = nameInfo.name;
     inputHobbyProfile.value = nameInfo.aboutMe;
 }
 )
 
-const popupUpdateAvatar = new PopupWithForm(popupAvatar, () => {
-    updateAvatar()
-
-});
-
 avatarIcon.addEventListener('click', () => {
     popupUpdateAvatar.open();
+    formAvatar.disableButton();
+    formAvatar.resetError()
 })
 
 avatarIcon.addEventListener('mouseover', () => {

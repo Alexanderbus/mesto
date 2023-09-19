@@ -18,12 +18,13 @@ export class Card {
         return cardElement;
     }
 
-    likeButton() {
-        if (this._cardLike.className == 'card__like card__like_active') {
-            this._counterLike.textContent = Number(this._counterLike.textContent) - 1; 
-        } else {
-            this._counterLike.textContent = Number(this._counterLike.textContent) + 1;
-        }
+    likeButton(data) {
+        // if (this._cardLike.className == 'card__like card__like_active') {
+        //    this._counterLike.textContent = Number(this._counterLike.textContent) - 1; 
+        // } else {
+        //    this._counterLike.textContent = Number(this._counterLike.textContent) + 1;
+        // }
+        this._counterLike.textContent = data;
         this._cardLike.classList.toggle('card__like_active');
     }
 

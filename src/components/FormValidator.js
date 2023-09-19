@@ -5,7 +5,6 @@ export class FormValidator {
         this._submitButton = config.submitButton // popup__submit-button
         this._input = config.input; // popup__input
         this._inputsArray = config.inputsArray; 
-
         this._formSelector = formSelector;
     }
 
