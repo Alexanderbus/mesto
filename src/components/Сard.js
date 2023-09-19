@@ -19,11 +19,6 @@ export class Card {
     }
 
     likeButton(data) {
-        // if (this._cardLike.className == 'card__like card__like_active') {
-        //    this._counterLike.textContent = Number(this._counterLike.textContent) - 1; 
-        // } else {
-        //    this._counterLike.textContent = Number(this._counterLike.textContent) + 1;
-        // }
         this._counterLike.textContent = data;
         this._cardLike.classList.toggle('card__like_active');
     }
@@ -81,7 +76,7 @@ export class Card {
         this._cardPhoto.src = this._image;
         this._element.querySelector('.card__text').textContent = this._title;
         this._cardPhoto .alt = this._title;
-        this._element.querySelector('.card__likeNumbers').textContent = this._likes.length;
+        this._counterLike.textContent = this._likes.length;
         this._addTrash();
         this._activateLike();
         return this._element;
