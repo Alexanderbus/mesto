@@ -171,7 +171,7 @@ const popupFormPhoto = new PopupWithForm(popupAddPhoto, () => {
 
 buttonAddPhoto.addEventListener('click', () => {
     popupFormPhoto.open()
-    formAddPhoto.disableButton() // если я это уберу, кнопка будет активной при открытии поп-апа, это написано у меня четко по вебинару от куратора
+    formAddPhoto.disableButton() 
     formAddPhoto.resetError()
 })
 
