@@ -1,5 +1,5 @@
 export class Card {
-    constructor( data, { title, image, likes, handleCardClick, confirmDelete, addLike }, template, userID) {
+    constructor(data, { title, image, likes, handleCardClick, confirmDelete, addLike }, template, userID) {
         this._title = title;
         this._image = image;
         this._likes = likes;
@@ -18,6 +18,11 @@ export class Card {
         return cardElement;
     }
 
+    isLiked(cardElement) {
+        return cardElement.querySelector('.card__like').className == 'card__like card__like_active'
+
+    }
+
     likeButton(data) {
         this._counterLike.textContent = data;
         this._cardLike.classList.toggle('card__like_active');
@@ -30,7 +35,7 @@ export class Card {
             }
         });
     }
-    
+
     deleteButton() {
         this._element.remove();
     }
@@ -47,7 +52,7 @@ export class Card {
             // this._deleteButton();
             this._confirmDelete(this)
         });
-        this._cardPhoto .addEventListener('click', () => {
+        this._cardPhoto.addEventListener('click', () => {
             this._handleCardClick()
         }
         );
@@ -58,16 +63,16 @@ export class Card {
     }
 
     _addTrash() {
-        if(this._userID ==  this._ownerId)
-        this._element.querySelector('.card__trash').classList.add('card__trash_active')
+        if (this._userID == this._ownerId)
+            this._element.querySelector('.card__trash').classList.add('card__trash_active')
     }
 
     _activateLike() {
         this._likes.forEach(element => {
             if (element._id == this._userID) {
-                this._element.querySelector('.card__like').classList.add('card__like_active')
+                this._cardLike.classList.add('card__like_active')
             }
-        })   
+        })
     }
 
     generateCard() {
@@ -75,7 +80,7 @@ export class Card {
         this._setEventListeners();
         this._cardPhoto.src = this._image;
         this._element.querySelector('.card__text').textContent = this._title;
-        this._cardPhoto .alt = this._title;
+        this._cardPhoto.alt = this._title;
         this._counterLike.textContent = this._likes.length;
         this._addTrash();
         this._activateLike();

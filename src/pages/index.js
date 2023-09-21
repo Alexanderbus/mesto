@@ -21,7 +21,6 @@ const inputsEditProfile = popupFormEditProfile.querySelectorAll('.popup__input')
 const inputsArrayEditProfile = Array.from(inputsEditProfile)
 const cardTemplate = document.querySelector('.card-template')
 const avatar = document.querySelector('.avatar')
-// const deleteButton = document.querySelector('.popup__submit-button_delete-card')
 const avatarIcon = document.querySelector('.avatar')
 const avatarPen = document.querySelector('.pencil')
 const popupAvatar = document.querySelector('.popup_avatar')
@@ -29,7 +28,6 @@ const formPopupAvatar = document.querySelector('.popup__form_avatar')
 const inputUrlAvatar = formPopupAvatar.avatarURL
 const inputUrlAvatarArray = [inputUrlAvatar]
 const submitButtonAvatar = formPopupAvatar.querySelector('.popup__submit-button_avatar')
-console.log(inputUrlAvatarArray)
 
 import { Card } from '../components/Сard.js';
 import { FormValidator } from '../components/FormValidator.js'
@@ -61,6 +59,7 @@ const api = new Api({
 const userInformation = new UserInfo({ name: nameProfile, aboutMe: hobbyProfile, avatar: avatar })
 const popupWithImage = new PopupWithImage(popupImage)
 
+
 // //Узнаем информацию юзера и добавляем 
 function getUserInfo() {
     api.getUserInfo()
@@ -76,30 +75,16 @@ const defaultCards = new Section({
     }
 }, cards)
 
-//добавление начальных карточек с сервера
-function addCards() {
-    api.getCards()
-        .then(data => {
-            const revesrData = data.reverse()
-            defaultCards.renderItems(revesrData)
-        }
-        )
-        .catch((error) => console.error(`Ошибка: ${error}`))
-
-}
-
 let userId = ''
+
 Promise.all([api.getUserInfo(), api.getCards()])
     .then(([userData, initialCards]) => {
         userId = userData._id
-        const userInformation = new UserInfo({ name: nameProfile, aboutMe: hobbyProfile, avatar: avatar })
         userInformation.setUserInfo(userData.name, userData.about, userData.avatar)
         const revesrData = initialCards.reverse()
         defaultCards.renderItems(revesrData)
     })
     .catch((error) => console.error(`Ошибка: ${error}`))
-
-console.log(userId);
 
 function createCard(item) {
     const card = new Card(item, {
@@ -118,7 +103,7 @@ function createCard(item) {
                         .finally(() => popupWithDelete.resetDefaultText())
                 )
             }, addLike: () => {
-                if (cardElement.querySelector('.card__like').className == 'card__like card__like_active') {
+                if (card.isLiked(cardElement)) {
                     api.deleteLike(item._id)
                         .then((data) => {
                             card.likeButton(data.likes.length)
@@ -142,7 +127,7 @@ function updateAvatar() {
     const data = popupUpdateAvatar.getInputValues();
     api.updateAvatar({ avatar: data.avatarURL })
         .then(ava => {
-            avatar.style.backgroundImage = `url('${ava.avatar}')`;
+            userInformation.setAvatar(ava.avatar);
             popupUpdateAvatar.close()
         })
         .catch((error) => console.error(`Ошибка: ${error}`))
@@ -166,15 +151,9 @@ function addNewCard() {
 }
 
 // Валидация
-const formAddPhoto = new FormValidator({
-    submitButton: submitButtonAddphoto, inputsArray: inputsArrayAddPhoto 
-}, popupFormAddPhoto)
-const formEditProfile = new FormValidator({
-    submitButton: submitButtonEditProfile, inputsArray: inputsArrayEditProfile 
-}, popupFormEditProfile)
-const formAvatar = new FormValidator({
-    submitButton: submitButtonAvatar, inputsArray: inputUrlAvatarArray 
-}, formPopupAvatar)
+const formAddPhoto = new FormValidator(inputsArrayAddPhoto, popupFormAddPhoto)
+const formEditProfile = new FormValidator(inputsArrayEditProfile, popupFormEditProfile)
+const formAvatar = new FormValidator(inputUrlAvatarArray, formPopupAvatar)  // если я уберу инпуты, у меня не будет работать кодик с валидацией аватара, так как у меня там проверяется массив, а у него всего одна форма заполнения
 
 function launchValidation(form) {
     form.enableValidation()
@@ -205,7 +184,7 @@ function handleFormSubmitProfile() {
     const data = popFormEditProfile.getInputValues()
     api.updateUserInfo({ name: data.nameEditProfile, about: data.aboutEditProfile })
         .then(profile => {
-            getUserInfo();
+            userInformation.setNickName(profile.name, profile.about)
             popFormEditProfile.close()
         })
         .catch((error) => console.error(`Ошибка: ${error}`))

@@ -1,10 +1,3 @@
-const handleResponse = res => {
-    if (res.ok) {
-        return res.json();
-    }
-    throw new Error('Произошла ошибка:(')
-}
-
 export class Api {
     constructor(config) {
         this._url = config.url;
@@ -22,14 +15,14 @@ export class Api {
         return fetch(`${this._url}/cards`, {
             headers: this._headers
         })
-            .then(handleResponse)
+            .then(this.handleResponse)
     }
 
     getUserInfo() {
         return fetch(`${this._url}/users/me`, {
             headers: this._headers
         })
-            .then(handleResponse)
+        .then(this.handleResponse)
     }
 
     updateUserInfo(data) {
@@ -38,7 +31,7 @@ export class Api {
             headers: this._headers,
             body: JSON.stringify(data)
         })
-            .then(handleResponse)
+        .then(this.handleResponse)
     }
 
     addCard(card) {
@@ -47,14 +40,14 @@ export class Api {
             body: JSON.stringify(card),
             headers: this._headers
         })
-            .then(handleResponse)
+        .then(this.handleResponse)
     }
 
     getUserID() {
         return fetch(`${this._url}/users/me`, {
             headers: this._headers
         })
-            .then(handleResponse)
+        .then(this.handleResponse)
             .then(userInfo => {
                 return userInfo._id})
     }
@@ -64,7 +57,7 @@ export class Api {
           method: 'DELETE',
           headers: this._headers
         })
-            .then(handleResponse)
+        .then(this.handleResponse)
     }
 
     addLike(data) {
@@ -72,7 +65,7 @@ export class Api {
             method: 'PUT',
             headers: this._headers
           })
-              .then(handleResponse)
+          .then(this.handleResponse)
       }
 
       deleteLike(data) {
@@ -80,7 +73,7 @@ export class Api {
             method: 'DELETE',
             headers: this._headers
           })
-              .then(handleResponse)
+          .then(this.handleResponse)
       }
 
       updateAvatar(data) {
@@ -89,7 +82,7 @@ export class Api {
             headers: this._headers,
             body: JSON.stringify(data)
         })
-            .then(handleResponse)
+        .then(this.handleResponse)
             .then(data => {
                 return data
             })
