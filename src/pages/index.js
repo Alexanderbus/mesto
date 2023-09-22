@@ -59,16 +59,6 @@ const api = new Api({
 const userInformation = new UserInfo({ name: nameProfile, aboutMe: hobbyProfile, avatar: avatar })
 const popupWithImage = new PopupWithImage(popupImage)
 
-
-// //Узнаем информацию юзера и добавляем 
-function getUserInfo() {
-    api.getUserInfo()
-        .then(userInfo => {
-            userInformation.setUserInfo(userInfo.name, userInfo.about, userInfo.avatar)
-        })
-        .catch((error) => console.error(`Ошибка: ${error}`))
-}
-
 const defaultCards = new Section({
     renderer: (item) => {
         defaultCards.addItem(createCard(item));
@@ -151,9 +141,18 @@ function addNewCard() {
 }
 
 // Валидация
-const formAddPhoto = new FormValidator(inputsArrayAddPhoto, popupFormAddPhoto)
-const formEditProfile = new FormValidator(inputsArrayEditProfile, popupFormEditProfile)
-const formAvatar = new FormValidator(inputUrlAvatarArray, formPopupAvatar)  // если я уберу инпуты, у меня не будет работать кодик с валидацией аватара, так как у меня там проверяется массив, а у него всего одна форма заполнения
+const formAddPhoto = new FormValidator({
+    errorClass: 'popup__input_invalid', disableButton: 'popup__submit-button_disabled', 
+    submitButton: submitButtonAddphoto, input: '.popup__input', inputsArray: inputsArrayAddPhoto 
+}, popupFormAddPhoto)
+const formEditProfile = new FormValidator({
+    errorClass: 'popup__input_invalid', disableButton: 'popup__submit-button_disabled',
+    submitButton: submitButtonEditProfile, input: '.popup__input', inputsArray: inputsArrayEditProfile 
+}, popupFormEditProfile)
+const formAvatar = new FormValidator({
+    errorClass: 'popup__input_invalid', disableButton: 'popup__submit-button_disabled',
+    submitButton: submitButtonAvatar, input: '.popup__input', inputsArray: inputUrlAvatarArray 
+}, formPopupAvatar)
 
 function launchValidation(form) {
     form.enableValidation()
