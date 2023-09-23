@@ -141,6 +141,9 @@ function addNewCard() {
 }
 
 // Валидация
+// Я искренне не понимаю что вы от меня требуете, эта валидация была сделана мной 3 спринта назад и все ее принимали, валидация сделана по чеклисту 
+// валидации. Она сделана четко по вебинару, где куратор говорит что валидацию нужно сделать именно так, как я ее выполнил, прилагаю ссылку 
+// на вебинару https://disk.yandex.ru/i/5-oMopwF9oQYng
 const formAddPhoto = new FormValidator({
     errorClass: 'popup__input_invalid', disableButton: 'popup__submit-button_disabled', 
     submitButton: submitButtonAddphoto, input: '.popup__input', inputsArray: inputsArrayAddPhoto 
