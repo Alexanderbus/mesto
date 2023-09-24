@@ -18,10 +18,9 @@ export class Card {
         return cardElement;
     }
 
-    isLiked(cardElement) {
-        return cardElement.querySelector('.card__like').className == 'card__like card__like_active'
-
-    }
+    isLiked() {
+        return this._cardLike.classList.contains('card__like_active')
+    } 
 
     likeButton(data) {
         this._counterLike.textContent = data;

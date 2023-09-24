@@ -93,7 +93,7 @@ function createCard(item) {
                         .finally(() => popupWithDelete.resetDefaultText())
                 )
             }, addLike: () => {
-                if (card.isLiked(cardElement)) {
+                if (card.isLiked()) {
                     api.deleteLike(item._id)
                         .then((data) => {
                             card.likeButton(data.likes.length)
@@ -140,22 +140,17 @@ function addNewCard() {
         })
 }
 
+const config = {
+    errorClass: 'popup__input_invalid',
+    disableButton: 'popup__submit-button_disabled',
+    submitButton: '.popup__submit-button',
+    input: '.popup__input',
+  };
+  
 // Валидация
-// Я искренне не понимаю что вы от меня требуете, эта валидация была сделана мной 3 спринта назад и все ее принимали, валидация сделана по чеклисту 
-// валидации. Она сделана четко по вебинару, где куратор говорит что валидацию нужно сделать именно так, как я ее выполнил, прилагаю ссылку 
-// на вебинару https://disk.yandex.ru/i/5-oMopwF9oQYng
-const formAddPhoto = new FormValidator({
-    errorClass: 'popup__input_invalid', disableButton: 'popup__submit-button_disabled', 
-    submitButton: submitButtonAddphoto, input: '.popup__input', inputsArray: inputsArrayAddPhoto 
-}, popupFormAddPhoto)
-const formEditProfile = new FormValidator({
-    errorClass: 'popup__input_invalid', disableButton: 'popup__submit-button_disabled',
-    submitButton: submitButtonEditProfile, input: '.popup__input', inputsArray: inputsArrayEditProfile 
-}, popupFormEditProfile)
-const formAvatar = new FormValidator({
-    errorClass: 'popup__input_invalid', disableButton: 'popup__submit-button_disabled',
-    submitButton: submitButtonAvatar, input: '.popup__input', inputsArray: inputUrlAvatarArray 
-}, formPopupAvatar)
+const formAddPhoto = new FormValidator(config, popupFormAddPhoto)
+const formEditProfile = new FormValidator(config, popupFormEditProfile)
+const formAvatar = new FormValidator(config, formPopupAvatar)
 
 function launchValidation(form) {
     form.enableValidation()
